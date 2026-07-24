@@ -1,8 +1,4 @@
-/* ============================================================
-   E-Cranes — раздел «Услуги»
-   ============================================================ */
 
-/* ---------- Шрифты (self-hosted) ---------- */
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -52,7 +48,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ---------- Токены ---------- */
 :root {
   --c-accent: #E22C42;
   --c-dark: #181818;
@@ -71,7 +66,6 @@
   --container: 162rem;
 }
 
-/* ---------- База ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -112,12 +106,9 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-/* акцентный (красный) фрагмент текста — глобально для всех секций */
 .accent { color: var(--c-accent); }
 
-/* ---------- Общие элементы ---------- */
 
-/* красная кнопка-капсула */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--c-accent); color: var(--c-white);
@@ -127,7 +118,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .btn:hover { background: #c92438; }
 
-/* тёмный бейдж секции: «• Как это работает» */
 .section-badge {
   display: inline-flex; align-items: center; gap: 0.8rem;
   background: var(--c-dark-2); color: var(--c-line);
@@ -139,13 +129,11 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   background: var(--c-line);
 }
 
-/* заголовок секции */
 .section-title {
   font-weight: 600; font-size: clamp(2.4rem, 2.1vw, 4rem); line-height: 1.2;
   text-transform: uppercase; color: var(--c-dark-2);
 }
 
-/* контурный чип */
 .chip {
   display: inline-block;
   border: 1px solid var(--c-accent); border-radius: 3rem;
@@ -164,9 +152,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   overflow-wrap: anywhere;
 }
 
-/* ============================================================
-   Хедер + hero
-   ============================================================ */
 .hero {
   position: relative;
   background: var(--c-dark);
@@ -198,7 +183,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .hero--smart .hero__crane { background-image: url('../img/hero-crane-smart.webp'); }
 .hero > .container { position: relative; z-index: 1; }
 
-/* верхняя строка хедера */
 .header__row {
   display: flex; align-items: center; gap: 3rem;
   padding: 2rem 0 2.4rem;
@@ -225,7 +209,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   border: 0; border-top: 1px solid rgba(255, 255, 255, .2); margin: 0;
 }
 
-/* хлебные крошки: ссылки и разделители приглушены, активная страница — белым */
 .breadcrumbs {
   font-size: 1.4rem; color: var(--c-muted);
   padding: 3.8rem 0 0;
@@ -233,7 +216,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .breadcrumbs a:hover { color: var(--c-white); }
 .breadcrumbs__current { color: var(--c-white); }
 
-/* контент hero */
 .hero__title {
   font-weight: 600; font-size: clamp(3rem, 3.2vw, 6rem); line-height: 1.2;
   text-transform: uppercase;
@@ -247,9 +229,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .hero__lead .accent { color: var(--c-accent); }
 .hero__lead--wide { max-width: 90.3rem; }
 
-/* ============================================================
-   Секция «Что входит в состав работ»
-   ============================================================ */
 .intro {
   background: var(--c-bg-light);
   padding: 7rem 0;
@@ -281,9 +260,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .intro__photo { border-radius: 2rem; overflow: hidden; height: 64.7rem; }
 .intro__photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ============================================================
-   Секция «Технические предпосылки» — слайдер
-   ============================================================ */
 .reasons {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -340,7 +316,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .reasons__text .accent { color: var(--c-accent); }
 
-/* пагинация — точки в левом верхнем углу */
 .reasons__pagination.swiper-pagination {
   position: absolute; top: 5rem; left: 5rem;
   bottom: auto; width: auto;
@@ -354,7 +329,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .reasons__pagination .swiper-pagination-bullet-active { opacity: 1; }
 
-/* стрелки — круги в правом нижнем углу */
 .reasons__nav {
   position: absolute; right: 5rem; bottom: 5rem;
   display: flex; gap: 1rem;
@@ -371,9 +345,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   background: var(--c-white); color: var(--c-dark);
 }
 
-/* ============================================================
-   Секция «Технические решения» — карточки с попапами
-   ============================================================ */
 .solutions {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -422,9 +393,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .solution-card__more svg { transition: transform .25s ease; }
 .solution-card__more:hover svg { transform: translateX(0.6rem); }
 
-/* ============================================================
-   Попапы
-   ============================================================ */
 .modal {
   position: fixed; inset: 0; z-index: 100;
   display: flex; align-items: center; justify-content: center;
@@ -487,9 +455,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   background: var(--c-text);
 }
 
-/* ============================================================
-   Баннер «Смарт-опции»
-   ============================================================ */
 .smart-banner {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -516,9 +481,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .smart-banner__photo { border-radius: 2rem; overflow: hidden; }
 .smart-banner__photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ============================================================
-   Секция «Экономический эффект» — слайдер выгод
-   ============================================================ */
 .effect {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -578,9 +540,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 /* страницы Модернизации: все caption'ы в макете fs18/lh21.6 */
 .effect-card__caption--18 { font-size: 1.8rem; line-height: 2.16rem; }
 
-/* ============================================================
-   Форма «Бесплатная консультация»
-   ============================================================ */
 .consult {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -645,9 +604,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   outline: 2px solid var(--c-accent); outline-offset: 2px;
 }
 
-/* ============================================================
-   Секция «Этапы выполнения работ»
-   ============================================================ */
 .stages {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -691,9 +647,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .stage-card--accent .stage-card__title { color: var(--c-bg-light); }
 .stage-card--accent .stage-card__text { color: #F3F3F3; }
 
-/* ============================================================
-   Секция «Новая эффективность» (о нас)
-   ============================================================ */
 .about {
   background: var(--c-bg-light);
   padding: 7rem 0 5rem;
@@ -744,9 +697,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .about__photo--hud { height: auto; align-self: stretch; }
 .about__photo--hud img { height: 100%; object-fit: cover; }
 
-/* ============================================================
-   Секция «Ключевые функции SMART CRANE» — сетка 3×3 (карточки + фото)
-   ============================================================ */
 .keyfunc { background: var(--c-bg-light); padding: 5rem 0; }
 .keyfunc__title { margin: 3.8rem 0 4rem; }
 .keyfunc__grid {
@@ -784,9 +734,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .keyfunc-photo { border-radius: 1.5rem; overflow: hidden; }
 .keyfunc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ============================================================
-   Секция «Системы безопасности и противораскачивания»
-   ============================================================ */
 .safety { background: var(--c-bg-light); padding: 5rem 0; }
 .safety__head {
   display: flex; align-items: flex-start; justify-content: space-between; gap: 4rem;
@@ -799,9 +746,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .safety__slider { border-radius: 2rem; overflow: hidden; }
 .safety__slide img { width: 100%; height: auto; display: block; }
 
-/* ============================================================
-   Секция «Когда необходимо внедрение SMART CRANE»
-   ============================================================ */
 .whenneed { background: var(--c-bg-light); padding: 5rem 0; }
 .whenneed__title { margin: 3.8rem 0 1.4rem; }
 .whenneed__lead {
@@ -833,9 +777,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .when-photo { border-radius: 1rem; overflow: hidden; }
 .when-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ============================================================
-   Секция «Цифры»
-   ============================================================ */
 .stats {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -889,9 +830,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .stat-card--accent .stat-card__caption { color: #F3F3F3; }
 
-/* ============================================================
-   Секция «Почему нам доверяют»
-   ============================================================ */
 .advantages {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -931,9 +869,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .advantage-card__text .accent { color: var(--c-accent); }
 
-/* ============================================================
-   Общая навигация слайдеров
-   ============================================================ */
 .slider-nav { display: flex; gap: 1rem; flex-shrink: 0; }
 .slider-arrow {
   width: 5.3rem; height: 5.3rem;
@@ -944,9 +879,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .slider-arrow:hover { background: var(--c-dark-2); color: var(--c-white); }
 
-/* ============================================================
-   Секция «Наши работы» — кейсы
-   ============================================================ */
 .cases {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -1000,9 +932,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   margin-top: 4rem;
 }
 
-/* ============================================================
-   Секция «География деятельности»
-   ============================================================ */
 .geo {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -1050,9 +979,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .geo__logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(1); }
 
-/* ============================================================
-   Секция «Другие услуги»
-   ============================================================ */
 .other {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -1098,9 +1024,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   margin-top: 2.6rem;
 }
 
-/* ============================================================
-   Баннер «Диагностика» с формой
-   ============================================================ */
 .diag {
   background: var(--c-bg-light);
   padding: 5rem 0;
@@ -1197,9 +1120,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .diag__submit { height: 6.5rem; font-size: 2rem; margin-top: 0.6rem; }
 
-/* ============================================================
-   Появление блоков при скролле
-   ============================================================ */
 [data-reveal] {
   opacity: 0;
   transform: translateY(3rem);
@@ -1213,9 +1133,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
-/* ============================================================
-   Подвал
-   ============================================================ */
 .footer {
   background: var(--c-bg-light);
   color: var(--c-dark);
