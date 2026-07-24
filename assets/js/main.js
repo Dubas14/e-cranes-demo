@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reasonsSlider = document.querySelector('.reasons__slider');
   if (reasonsSlider && typeof Swiper !== 'undefined') {
     const reasonsConfig = {
-      rewind: true,
+      loop: true,
       grabCursor: true,
       speed: 600,
       pagination: {
@@ -26,11 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     new Swiper(reasonsSlider, reasonsConfig);
   }
 
-  // Слайдер «Экономический эффект»
+  // Слайдер «Экономический эффект» (6 уникальных слайдов — 2 баннера макета)
   const effectSlider = document.querySelector('.effect__slider');
   if (effectSlider && typeof Swiper !== 'undefined') {
-    new Swiper(effectSlider, {
+    const effectConfig = {
       slidesPerView: 1,
+      loop: true,
       grabCursor: true,
       spaceBetween: 20,
       speed: 600,
@@ -42,32 +43,62 @@ document.addEventListener('DOMContentLoaded', () => {
         768: { slidesPerView: 2 },
         1200: { slidesPerView: 3 },
       },
-    });
+    };
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      effectConfig.autoplay = {
+        delay: 5000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      };
+    }
+    new Swiper(effectSlider, effectConfig);
   }
 
-  // Слайдер «Наши работы»
+  // общий автоплей для карточных слайдеров (уважает reduced-motion)
+  const autoplayConfig = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? {}
+    : { autoplay: { delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false } };
+
+  // Слайдер «Наши работы» (4 уникальных кейса — 2 баннера макета)
   const casesSlider = document.querySelector('.cases__slider');
   if (casesSlider && typeof Swiper !== 'undefined') {
     new Swiper(casesSlider, {
       slidesPerView: 1,
+      loop: true,
       grabCursor: true,
       spaceBetween: 20,
       speed: 600,
       navigation: { nextEl: '.cases__next', prevEl: '.cases__prev' },
       breakpoints: { 1024: { slidesPerView: 2 } },
+      ...autoplayConfig,
     });
   }
 
-  // Слайдер «Другие услуги»
+  // Слайдер «Другие услуги» (слайды продублированы до 4 — для loop)
   const otherSlider = document.querySelector('.other__slider');
   if (otherSlider && typeof Swiper !== 'undefined') {
     new Swiper(otherSlider, {
       slidesPerView: 1,
+      loop: true,
       grabCursor: true,
       spaceBetween: 20,
       speed: 600,
       navigation: { nextEl: '.other__next', prevEl: '.other__prev' },
       breakpoints: { 1024: { slidesPerView: 2 } },
+      ...autoplayConfig,
+    });
+  }
+
+  // Слайдер «Системы безопасности и противораскачивания» (3 баннера SMART CRANE)
+  const safetySlider = document.querySelector('.safety__slider');
+  if (safetySlider && typeof Swiper !== 'undefined') {
+    new Swiper(safetySlider, {
+      slidesPerView: 1,
+      loop: true,
+      grabCursor: true,
+      speed: 600,
+      navigation: { nextEl: '.safety__next', prevEl: '.safety__prev' },
+      ...autoplayConfig,
     });
   }
 
