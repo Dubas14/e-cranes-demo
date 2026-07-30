@@ -102,6 +102,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Слайдер «Причины перехода на аутсорсинг»
+  const outsourceSlider = document.querySelector('.outsource__slider');
+  if (outsourceSlider && typeof Swiper !== 'undefined') {
+    new Swiper(outsourceSlider, {
+      slidesPerView: 1,
+      loop: true,
+      grabCursor: true,
+      spaceBetween: 20,
+      speed: 600,
+      navigation: { nextEl: '.outsource__next', prevEl: '.outsource__prev' },
+      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+      ...autoplayConfig,
+    });
+  }
+
+  // Слайдер «Почему нам доверяют» (2 баннера макета)
+  const trustSlider = document.querySelector('.trust__slider');
+  if (trustSlider && typeof Swiper !== 'undefined') {
+    new Swiper(trustSlider, {
+      slidesPerView: 1,
+      loop: true,
+      grabCursor: true,
+      speed: 600,
+      navigation: { nextEl: '.trust__next', prevEl: '.trust__prev' },
+      pagination: { el: '.trust__pagination', clickable: true },
+      ...autoplayConfig,
+    });
+  }
+
+  // Слайдер «Услуги, которые вам также могут понадобиться»
+  const otherServicesSlider = document.querySelector('.other-services__slider');
+  if (otherServicesSlider && typeof Swiper !== 'undefined') {
+    new Swiper(otherServicesSlider, {
+      slidesPerView: 1,
+      loop: true,
+      grabCursor: true,
+      spaceBetween: 40,
+      speed: 600,
+      navigation: { nextEl: '.other-services__next', prevEl: '.other-services__prev' },
+      breakpoints: { 1024: { slidesPerView: 2 } },
+      ...autoplayConfig,
+    });
+  }
+
+  // Табы сервисных программ
+  const progTabs = document.querySelectorAll('.servprog__tab');
+  if (progTabs.length) {
+    progTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        progTabs.forEach((t) => {
+          const on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          const panel = document.getElementById(t.dataset.tab);
+          if (panel) panel.hidden = !on;
+        });
+      });
+    });
+  }
+
+  // FAQ — аккордеон (высоту анимирует CSS через grid-template-rows)
+  document.querySelectorAll('.faq__q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (item) item.classList.toggle('is-open', !open);
+    });
+  });
+
   // Формы — заглушка отправки (интеграция на этапе Битрикса)
   document.querySelectorAll('form').forEach((form) => {
     form.addEventListener('submit', (e) => {

@@ -1,51 +1,51 @@
 
+/* Montserrat — вариативный: один файл на все веса вместо шести копий
+   (400/500/600 были байт в байт одинаковы и грузились по три раза) */
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/montserrat-400-cyrillic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: block;
+  src: url('../fonts/montserrat-cyrillic.woff2') format('woff2');
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/montserrat-400-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: block;
+  src: url('../fonts/montserrat-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* при font-display: block этот шрифт НЕ рисуется — он только держит геометрию,
+   пока woff2 в пути, чтобы рамки и линии не дергались. Коэффициент разный по
+   весам: у Arial свое соотношение regular/bold, одним числом не сходится */
 @font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/montserrat-500-cyrillic.woff2') format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  font-family: 'Montserrat Fallback';
+  font-weight: 100 450;
+  src: local('Arial'), local('Helvetica Neue'), local('Liberation Sans');
+  size-adjust: 112.3%;
+  ascent-override: 86.4%;
+  descent-override: 22.3%;
+  line-gap-override: 0%;
 }
 @font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/montserrat-500-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Montserrat Fallback';
+  font-weight: 451 550;
+  src: local('Arial'), local('Helvetica Neue'), local('Liberation Sans');
+  size-adjust: 110.6%;
+  ascent-override: 87.7%;
+  descent-override: 22.6%;
+  line-gap-override: 0%;
 }
 @font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('../fonts/montserrat-600-cyrillic.woff2') format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('../fonts/montserrat-600-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Montserrat Fallback';
+  font-weight: 551 900;
+  src: local('Arial'), local('Helvetica Neue'), local('Liberation Sans');
+  size-adjust: 110%;
+  ascent-override: 88.2%;
+  descent-override: 22.7%;
+  line-gap-override: 0%;
 }
 
 :root {
@@ -62,7 +62,7 @@
   --c-white: #FFFFFF;
   --c-green: #2AFF00;
 
-  --font-main: 'Montserrat', Arial, sans-serif;
+  --font-main: 'Montserrat', 'Montserrat Fallback', Arial, sans-serif;
   --container: 162rem;
 }
 
@@ -161,10 +161,15 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .hero__bg, .hero__crane, .hero__overlay {
   position: absolute; pointer-events: none;
 }
+/* слой текстуры в макете 1923x631 на y=-21, растянут (не cover) */
 .hero__bg {
-  inset: 0;
-  background: url('../img/hero-bg.webp') center / cover no-repeat;
+  top: -2.1rem; left: 0;
+  width: 192.3rem; height: 63.1rem;
+  background: url('../img/hero-bg.webp') no-repeat;
+  background-size: 100% 100%;
 }
+/* на хабах Модернизации и Автоматизации тот же слой лежит на y=0 */
+.hero--modern .hero__bg { top: 0; }
 .hero__glow {
   position: absolute; pointer-events: none;
   right: 8%; top: 45%; width: 47%; height: 60%;
@@ -174,9 +179,11 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   top: 0; right: 0; bottom: 0; width: 57%;
   background: url('../img/hero-crane.webp') right center / cover no-repeat;
 }
+/* в макете затемнение одинаковое на всех страницах: ровный переход .9 → 0
+   (проверено на 10 нодах, включая еще не сверстанные) */
 .hero__overlay {
   inset: 0;
-  background: linear-gradient(90deg, rgba(24, 24, 24, .96) 30%, rgba(24, 24, 24, .55) 55%, rgba(24, 24, 24, 0) 78%);
+  background: linear-gradient(90deg, rgba(24, 24, 24, .9), rgba(24, 24, 24, 0));
 }
 .hero--koz .hero__crane { background-image: url('../img/hero-crane-koz.webp'); }
 .hero--port .hero__crane { background-image: url('../img/hero-crane-port.webp'); }
@@ -640,6 +647,9 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   font-size: 2rem; line-height: 2.4rem; color: #292929;
   margin-top: 1rem;
 }
+/* на «Смарт-опциях» текст-фреймы этапов в макете 369 против колонки 348 —
+   на остальных страницах они уже (319–357), поэтому вынос точечный */
+.stages--smart .stage-card__text { margin-right: -2.1rem; }
 .stage-card--photo { padding: 0; overflow: hidden; }
 .stage-card--photo img { width: 100%; height: 100%; object-fit: cover; }
 .stage-card--accent { background: var(--c-accent); }
@@ -693,7 +703,18 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .about__photo img { width: 100%; height: 100%; object-fit: cover; }
 /* HUD-схема SMART CRANE — колонка чуть шире, чтобы HUD в своей пропорции
    дотягивался до низа карточки без обрезки плиток */
-.about--intellect .about__grid { grid-template-columns: minmax(0, 748fr) minmax(0, 852fr); }
+/* в макете колонки равные: карточка 800 на x=150, фото 800 на x=970 при gap 20 */
+.about--intellect .about__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+/* текст-фреймы в макете разные: 676 у первого абзаца, 707 у второго */
+.about--intellect .about__text { max-width: 67.6rem; }
+.about--intellect .about__text + .about__text { max-width: 70.7rem; margin-right: -0.7rem; }
+/* по макету от верха секции: бейдж 70, заголовок 130, сетка 218 */
+.about--intellect { padding-top: 6.6rem; }
+.about--intellect .about__title { margin: 3.2rem 0 4rem; }
+/* карточка в макете 800x613 — фото тянется по ней, поэтому отступы и кнопка
+   здесь свои: иначе карточка выше макета и cover срезает HUD по бокам */
+.about--intellect .about__highlight { margin-top: 2.2rem; }
+.about--intellect .about__btn { margin-top: 3rem; height: 6.5rem; width: 34.4rem; }
 .about__photo--hud { height: auto; align-self: stretch; }
 .about__photo--hud img { height: 100%; object-fit: cover; }
 
@@ -1177,3 +1198,627 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   padding: 3.6rem 0 4.2rem;
   font-size: 2rem;
 }
+
+/* Хабы услуг: заголовки крупнее детальных (макет fs70/fs100 против fs60),
+   лид идет вплотную под заголовком — зазор 15px против 44px на детальных */
+.hero__title--xl { font-size: clamp(3rem, 3.9vw, 7rem); }
+.hero__title--xxl { font-size: clamp(3.4rem, 5.4vw, 10rem); }
+/* высота hero на хабах задана макетом (503px), а не отступом под лидом:
+   при fs70 и fs100 заголовках контент разной высоты, низ должен совпадать */
+.hero--hub { min-height: 50.3rem; }
+.hero--hub .hero__lead { margin: 1.5rem 0 0; max-width: 65.7rem; }
+.hero--hub .hero__lead--wide { max-width: 90.6rem; }
+/* кадрирование под макет: рендер шире блока, привязка к правому краю с выносом */
+/* хабы «Модернизация»/«Автоматизация»: рендер лежит в макете отдельным слоем
+   690,38 при 1468x979 — переносим геометрию как есть, привязка к правому краю */
+.hero--modern .hero__crane {
+  background-image: url('../img/hero-crane-modern.webp');
+  top: 3.8rem; bottom: auto; left: auto; right: -23.8rem;
+  width: 146.8rem; height: 97.9rem;
+  background-size: 100% 100%;
+}
+.hero--modern .hero__glow {
+  right: 5.6rem; top: 31.2rem; width: 89.2rem; height: 20.2rem;
+}
+
+/* фрейм лида в макете 951, общий --wide (906) рвет строку раньше */
+.hero--mostovyh .hero__lead--wide { max-width: 95.1rem; }
+/* по макету H1 на y=196, лид сразу под ним на y=274 */
+.hero--mostovyh .hero__title,
+.hero--smart .hero__title { margin-top: 3.9rem; }
+/* высоту держит min-height (503 по макету), а не отступ лида: лид тут
+   двухстрочный на «Ремонте» и четырехстрочный на «Модернизации» */
+.hero--mostovyh, .hero--smart { min-height: 50.3rem; }
+.hero--mostovyh .hero__lead,
+.hero--smart .hero__lead { margin: 0.6rem 0 6rem; }
+
+/* «Смарт-опции»: слой рендера 1000,-79 при 1104x621; подсветка и затемнение
+   те же, что у мостовых (эллипсы в макете совпадают до пикселя) */
+.hero--smart .hero__crane {
+  top: -7.9rem; bottom: auto; left: auto; right: -18.4rem;
+  width: 110.4rem; height: 62.1rem;
+  background-size: 100% 100%;
+}
+
+/* один и тот же фон на «Ремонте мостовых» и «Модернизации мостовых»:
+   слой рендера 1076,-7 при 1101x734 + три размытых эллипса подсветки */
+.hero--mostovyh .hero__crane {
+  background-image: url('../img/hero-crane-mostovyh.webp');
+  top: -0.7rem; bottom: auto; left: auto; right: -25.7rem;
+  width: 110.1rem; height: 73.4rem;
+  background-size: 100% 100%;
+}
+/* Ellipse 108/110 (красные .35/.49) и 109 (синий), layer blur 300 —
+   эквивалент радиусами: полуоси эллипса + размытие */
+.hero--mostovyh .hero__glow,
+.hero--smart .hero__glow {
+  inset: 0; width: auto; height: auto;
+  background:
+    radial-gradient(59.7rem 20.1rem at 154.8rem 31.3rem, rgba(226, 44, 66, .49), transparent 70%),
+    radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%),
+    radial-gradient(43.5rem 22rem at 170rem 49.4rem, rgba(3, 43, 249, .30), transparent 70%);
+}
+
+/* «Модернизация козловых/портальных»: та же схема — свой слой рендера
+   и подсветка тремя эллипсами, отличаются только Ellipse 110 и кроп */
+.hero--koz, .hero--port { min-height: 50.3rem; }
+.hero--koz .hero__title, .hero--port .hero__title { margin-top: 3.9rem; }
+.hero--koz .hero__lead, .hero--port .hero__lead { margin: 0.6rem 0 6rem; }
+.hero--koz .hero__lead--wide { max-width: 90.3rem; }
+.hero--port .hero__lead { max-width: 85rem; }
+
+.hero--koz .hero__crane {
+  top: 7rem; bottom: auto; left: auto; right: -19.4rem;
+  width: 97.3rem; height: 64.9rem;
+  background-size: 100% 100%;
+}
+.hero--port .hero__crane {
+  top: 12rem; bottom: auto; left: auto; right: -14.8rem;
+  width: 97rem; height: 64.7rem;
+  background-size: 100% 100%;
+}
+.hero--koz .hero__glow, .hero--port .hero__glow {
+  inset: 0; width: auto; height: auto;
+}
+.hero--koz .hero__glow {
+  background:
+    radial-gradient(59.7rem 24.05rem at 154.9rem 26.25rem, rgba(226, 44, 66, .49), transparent 70%),
+    radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%),
+    radial-gradient(43.5rem 22rem at 170rem 49.4rem, rgba(3, 43, 249, .30), transparent 70%);
+}
+.hero--port .hero__glow {
+  background:
+    radial-gradient(59.7rem 23.4rem at 154.8rem 31.3rem, rgba(226, 44, 66, .49), transparent 70%),
+    radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%),
+    radial-gradient(43.5rem 22rem at 170rem 49.4rem, rgba(3, 43, 249, .30), transparent 70%);
+}
+
+.hero--uslugi .hero__glow {
+  right: -15.6rem; top: 33.8rem; width: 89.5rem; height: 14.9rem;
+}
+/* слой в макете: 1920x1080 на x=670, кроп уже запечен в ассет при экспорте */
+.hero--uslugi .hero__crane {
+  background-image: url('../img/hero-crane-uslugi.webp');
+  top: 0; bottom: auto; left: auto; right: -67rem;
+  width: 192rem; height: 108rem;
+  background-size: 100% 100%;
+}
+
+.hub-services {
+  background: var(--c-bg-light);
+  padding: 7rem 0 5rem;
+}
+.hub-services__title { margin: 3.3rem 0 1.4rem; }
+.hub-services__lead {
+  font-size: 2rem; line-height: 2.4rem;
+  max-width: 81.6rem;
+}
+.hub-services__lead .accent { color: var(--c-accent); }
+.hub-services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem 4rem;
+  margin-top: 4.5rem;
+}
+.hub-services__sep {
+  grid-column: 1 / -1;
+  border: 0; border-top: 1px solid var(--c-line); margin: 0;
+}
+.service-card { display: flex; flex-direction: column; }
+.service-card__photo {
+  display: block; width: 100%;
+  aspect-ratio: 790 / 383; object-fit: cover;
+  border-radius: 1.5rem;
+}
+/* колонка заголовка 395px из 790 по макету, описание — за вертикальной линией */
+.service-card__body {
+  display: grid;
+  grid-template-columns: 39.5rem minmax(0, 1fr);
+  margin-top: 2.6rem;
+  flex-grow: 1;
+}
+.service-card__title {
+  font-weight: 500; font-size: 3rem; line-height: 3.6rem;
+  text-transform: uppercase; color: var(--c-dark-2);
+  padding-right: 2rem;
+  min-width: 0; overflow-wrap: anywhere;
+}
+.service-card__text {
+  font-size: 1.7rem; line-height: 2.04rem; color: var(--c-text);
+  border-left: 1px solid var(--c-line);
+  padding-left: 2.5rem;
+  min-width: 0; overflow-wrap: anywhere;
+}
+.service-card__text .accent { color: var(--c-accent); }
+/* в Figma текст-фрейм 383 вылезает за колонку 370; Chrome в 370 не вмещает
+   «сокращения эксплуатационных расходов.» (374) — отдаем колонке 15px */
+.service-card--text-wide .service-card__body {
+  grid-template-columns: 38rem minmax(0, 1fr);
+}
+.service-card__btn {
+  display: flex; align-items: center; justify-content: center;
+  height: 6.5rem; border-radius: 6rem;
+  background: #231F20; color: var(--c-white);
+  font-weight: 500; font-size: 2rem; line-height: 1.2;
+  margin-top: 2.3rem;
+  transition: background .2s ease;
+}
+.service-card__btn:hover { background: var(--c-accent); }
+
+/* мозаика преимуществ на хабах: 4 колонки, фото чередуются с карточками */
+.advantages--mosaic .advantages__title { margin: 3.3rem 0 1.4rem; }
+.advantages__lead {
+  font-size: 2rem; line-height: 2.4rem;
+  max-width: 119.4rem;
+}
+.advantages__lead .accent { color: var(--c-accent); }
+.advantages--mosaic .advantages__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 4.5rem;
+}
+.advantages--mosaic .advantage-card {
+  border-radius: 1rem;
+  min-height: 28.5rem;
+  padding-bottom: 2rem;
+}
+.advantages__photo {
+  display: block; width: 100%; height: 100%;
+  min-height: 28.5rem;
+  object-fit: cover; border-radius: 1rem;
+}
+/* текст-фреймы мозаики в макете уже колонки карточки (332 из 348) —
+   без этого Chrome вмещает лишнее слово и переносы уезжают */
+.advantages--mosaic .advantage-card__text { max-width: 33rem; }
+/* в Figma строка «Отсутствие незапланированных» влезает в 332, Chrome дает 338 —
+   этой карточке отдаем всю колонку (348) */
+.advantages--mosaic .advantage-card__text--wide { max-width: 34.8rem; }
+
+.experts { background: var(--c-bg-light); padding: 7rem 0 5rem; }
+.experts__title { margin: 3.3rem 0 4rem; }
+.experts__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+.experts__box {
+  background: var(--c-bg-soft);
+  border-radius: 2rem;
+  padding: 4.6rem 5rem 5rem;
+  display: flex; flex-direction: column;
+}
+.experts__text {
+  font-size: 2rem; line-height: 2.4rem; color: var(--c-text);
+  max-width: 73rem;
+}
+.experts__text + .experts__text { margin-top: 1.1rem; }
+.experts__text .accent { color: var(--c-accent); }
+.experts__alert {
+  background: var(--c-accent); color: var(--c-white);
+  border-radius: 1rem;
+  padding: 1.8rem 2.1rem 2rem;
+  margin-top: 2.4rem;
+}
+.experts__alert-title { font-weight: 600; font-size: 2.5rem; line-height: 3rem; }
+.experts__alert-text { font-size: 2rem; line-height: 2.4rem; margin-top: 1rem; }
+.experts__btn {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 6.5rem; padding: 0 2.5rem;
+  border-radius: 6rem; background: #231F20; color: var(--c-white);
+  font-weight: 500; font-size: 2rem; line-height: 1.2;
+  margin-top: 3.5rem;
+  transition: background .2s ease;
+}
+.experts__btn:hover { background: var(--c-accent); }
+.experts__photo {
+  display: block; width: 100%; height: 100%;
+  min-height: 53rem;
+  object-fit: cover; border-radius: 2rem;
+}
+
+.formats { background: var(--c-bg-light); padding: 5rem 0; }
+.formats__title { margin: 3.3rem 0 4rem; }
+.formats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.format-card {
+  display: flex; flex-direction: column;
+  background: var(--c-bg-soft);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+.format-card__head { padding: 2rem 2rem 2.5rem; }
+.format-card__head-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.format-card__title { font-weight: 600; font-size: 2.8rem; line-height: 3.36rem; }
+.format-card__badge {
+  flex-shrink: 0;
+  background: #494949; color: var(--c-white);
+  border-radius: 3rem; padding: 0.5rem 1.3rem;
+  font-weight: 500; font-size: 2rem; line-height: 2.4rem;
+}
+.format-card__subtitle {
+  font-size: 1.9rem; line-height: 2.28rem;
+  max-width: 50rem;
+  margin-top: 1.1rem;
+}
+.format-card__list {
+  flex-grow: 1;
+  background: var(--c-white);
+  padding: 2rem;
+}
+.format-card__list li {
+  position: relative;
+  font-size: 1.9rem; line-height: 2.28rem;
+  padding: 0 0 1.6rem 2.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid var(--c-line-light);
+  background: url('../img/rem-gear-dark.svg') no-repeat 0 0.3rem / 1.7rem 1.7rem;
+}
+.format-card__list li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+.format-card__foot { padding: 2.1rem 2rem 2.9rem; }
+.format-card__note { font-size: 2rem; line-height: 2.4rem; }
+.format-card__note .accent { color: var(--c-accent); }
+.format-card__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 5rem; padding: 0 2.4rem;
+  border-radius: 6rem; background: #231F20; color: var(--c-white);
+  font-weight: 500; font-size: 1.7rem; line-height: 1.2;
+  margin-top: 1.6rem;
+  transition: background .2s ease;
+}
+.format-card__btn:hover { background: var(--c-accent); }
+.format-card--accent .format-card__head { background: var(--c-accent); color: var(--c-white); }
+.format-card--accent .format-card__subtitle { max-width: 44.2rem; }
+.format-card--accent .format-card__badge { background: var(--c-white); color: var(--c-text); }
+.format-card--accent .format-card__list li {
+  background-image: url('../img/rem-gear-red.svg');
+}
+
+.repair { background: var(--c-bg-light); padding: 5rem 0; }
+.repair__title { margin: 3.3rem 0 4rem; }
+.repair__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.repair-card {
+  background: var(--c-bg-soft);
+  border-radius: 1rem;
+  padding: 2rem 2.1rem 2.4rem;
+  min-height: 26rem;
+}
+.repair-card__icon { display: block; width: 3.3rem; height: 3.3rem; }
+.repair-card__title {
+  font-weight: 500; font-size: 2.5rem; line-height: 3rem;
+  color: var(--c-dark-2);
+  margin-top: 4.6rem;
+}
+.repair-card__text {
+  font-size: 2rem; line-height: 2.4rem; color: var(--c-text);
+  margin-top: 1rem;
+  min-width: 0; overflow-wrap: anywhere;
+}
+.repair-card__text .accent { color: var(--c-accent); }
+
+.servprog { background: var(--c-bg-light); padding: 5rem 0; }
+.servprog__title { margin: 3.3rem 0 4rem; }
+.servprog__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.servprog__tab {
+  min-height: 6.5rem; border-radius: 6rem;
+  border: 1px solid var(--c-accent);
+  color: var(--c-accent); background: transparent;
+  font-weight: 500; font-size: 2rem; line-height: 1.2;
+  transition: background .2s ease, color .2s ease;
+}
+.servprog__tab:hover { background: rgba(226, 44, 66, .08); }
+.servprog__tab.is-active {
+  background: var(--c-accent); color: var(--c-white);
+}
+.servprog__panel {
+  background: var(--c-white);
+  border-radius: 2rem;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+.servprog__panel[hidden] { display: none; }
+.servprog__head {
+  background: #231F20; color: var(--c-white);
+  padding: 5rem 5.2rem 4.4rem;
+}
+.servprog__badge {
+  display: inline-block;
+  background: #E8E8E8; color: var(--c-text);
+  border-radius: 3rem; padding: 0.8rem 2.1rem;
+  font-weight: 500; font-size: 2rem; line-height: 2.4rem;
+}
+.servprog__name {
+  font-weight: 600; font-size: 3.5rem; line-height: 4.2rem;
+  margin-top: 1.4rem;
+}
+.servprog__subtitle { font-size: 2rem; line-height: 2.4rem; margin-top: 1rem; }
+/* колонки по макету: текст 807 от края панели, список — за вертикальной линией.
+   Зазор дает padding колонки, а не gap, иначе правая колонка уже макетных 709 */
+.servprog__body {
+  display: grid;
+  grid-template-columns: minmax(0, 80.7rem) minmax(0, 1fr);
+  padding: 4.5rem 5.2rem 4rem;
+}
+.servprog__col-text { max-width: 74.9rem; }
+.servprog__col-text p { font-size: 2rem; line-height: 2.4rem; }
+.servprog__col-text p + p { margin-top: 2rem; }
+.servprog__col-text .accent { color: var(--c-accent); }
+.servprog__col-list { border-left: 1px solid var(--c-line); padding-left: 5.2rem; }
+.servprog__list-title { font-weight: 500; font-size: 2.5rem; line-height: 3rem; }
+.servprog__item { margin-top: 2.3rem; }
+.servprog__item-title {
+  font-weight: 500; font-size: 2.2rem; line-height: 2.64rem;
+  padding-left: 2.6rem;
+  background: url('../img/rem-gear-red.svg') no-repeat 0 0.4rem / 1.7rem 1.7rem;
+}
+/* текст-фреймы пунктов в макете 719/603 против колонки 657 — доходят до края
+   карточки, иначе «…программируемых логических» рвется лишний раз */
+.servprog__item-text { font-size: 1.9rem; line-height: 2.28rem; margin-top: 0.5rem; margin-right: -6.2rem; }
+.servprog__foot {
+  background: var(--c-bg-soft);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3rem;
+  align-items: center;
+  padding: 2.4rem 5rem 2.6rem 5.1rem;
+}
+.servprog__foot-text { font-size: 2rem; line-height: 2.4rem; max-width: 106.4rem; }
+/* у вкладки «Пакет 24/7» плашек брендов нет — текст занимает всю строку (1492) */
+.servprog__foot--full { grid-template-columns: minmax(0, 1fr); }
+.servprog__foot--full .servprog__foot-text { max-width: 149.2rem; }
+.servprog__foot-text .accent { color: var(--c-accent); }
+/* в макете это жесткая сетка 148/106/148 с шагом 10 (группа 422x82),
+   по контенту ширины разъезжаются и второй ряд не встает под первый */
+.servprog__brands {
+  display: grid;
+  grid-template-columns: 14.8rem 10.6rem 14.8rem;
+  gap: 1rem;
+  width: 42.2rem;
+  margin-left: auto;
+}
+.servprog__brand {
+  display: flex; align-items: center; justify-content: center;
+  height: 3.6rem;
+  background: var(--c-white); border-radius: 3rem;
+  font-weight: 500; font-size: 1.7rem; line-height: 2.04rem;
+  white-space: nowrap;
+}
+
+/* мозаика преимуществ сервисных программ: 3 колонки, заголовки без капса */
+.advantages--serv .advantages__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.1rem;
+  margin-top: 4rem;
+}
+.advantages--serv .advantage-card {
+  border-radius: 1rem; min-height: 0; padding-bottom: 2rem;
+}
+/* высоту рядов задают карточки (268/245/245 по макету), а не фото */
+.advantages--serv .advantages__photo { min-height: 0; }
+.advantages--serv .advantage-card__title { text-transform: none; }
+/* глифы выгружены из макета в своих размерах (26–40px) — не растягиваем */
+.advantages--serv .advantage-card__icon img { max-width: 4rem; max-height: 4rem; }
+.advantages--serv .advantage-card__text { font-size: 1.9rem; line-height: 2.28rem; margin-top: 1.5rem; }
+.advantages--serv .advantage-card__title { padding-bottom: 1.2rem; }
+.advantages--serv .advantages__title { margin: 3.3rem 0 0; }
+
+.outsource { background: var(--c-bg-light); padding: 5rem 0; }
+.outsource__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 4rem;
+  margin: 3.3rem 0 4rem;
+}
+.outsource__slider { overflow: hidden; }
+.out-card {
+  position: relative;
+  height: 28.5rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  color: var(--c-white);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2.1rem;
+}
+.out-card__bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+/* в макете два наложенных градиента .3→.7 (второй с opacity .72),
+   в сумме .45 сверху и .85 снизу — верх был перетемнен */
+.out-card__shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(24, 24, 24, .45) 0%, rgba(24, 24, 24, .85) 100%);
+}
+.out-card__icon {
+  position: absolute; top: 2.1rem; left: 2.1rem; z-index: 1;
+  width: 4rem; height: 4rem; border-radius: 50%;
+  background: rgba(255, 255, 255, .25);
+  display: flex; align-items: center; justify-content: center;
+}
+.out-card__icon img { width: 2rem; height: 2.2rem; }
+.out-card__title {
+  position: relative; z-index: 1;
+  font-weight: 500; font-size: 2.3rem; line-height: 2.76rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .45);
+}
+.out-card__text {
+  position: relative; z-index: 1;
+  font-size: 1.8rem; line-height: 2.16rem;
+  margin-top: 1.4rem;
+}
+/* текст-фрейм этой карточки в макете 505 против колонки 484 — иначе строка
+   «…риск аварий и остановок,» рвется на четвертую */
+.out-card__text--wide { margin-right: -2.1rem; }
+
+.trust { background: var(--c-bg-light); padding: 5rem 0; }
+.trust__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 4rem;
+  margin: 3.3rem 0 4rem;
+}
+.trust__slider { overflow: hidden; border-radius: 2rem; position: relative; }
+/* точки по макету — внутри баннера слева сверху, над подписью слайда.
+   Селектор с .trust__slider обязателен: свой .swiper-horizontal>.swiper-pagination
+   ставит bottom:8px и top:auto, и точки уезжают под низ баннера */
+.trust__slider .trust__pagination {
+  position: absolute; z-index: 2;
+  top: 5rem; bottom: auto; left: 5rem;
+  display: flex; gap: 0.4rem;
+  width: auto;
+}
+.trust__pagination .swiper-pagination-bullet {
+  width: 0.8rem; height: 0.8rem; margin: 0;
+  background: var(--c-white); opacity: .45;
+}
+.trust__pagination .swiper-pagination-bullet-active { opacity: 1; }
+.trust-slide {
+  position: relative;
+  min-height: 54.6rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  color: var(--c-white);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 7.2rem 5rem 5rem;
+}
+.trust-slide__bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+/* в макете ровный градиент .76→.11 при opacity слоя .92 (итог .70→.10):
+   фон был перетемнен, а локальную тень под текстом дает эллипс ниже */
+.trust-slide__shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(24, 24, 24, .7), rgba(24, 24, 24, .1));
+}
+.trust-slide__label {
+  position: relative; z-index: 1;
+  font-weight: 600; font-size: 2rem; line-height: 2.4rem;
+}
+/* текстовые фреймы в макете: заголовок 1003, абзац 923 */
+.trust-slide__body { position: relative; z-index: 1; max-width: 100.3rem; }
+/* Ellipse 2497: подложка 1051x182, заливка .67, layer blur 70 */
+.trust-slide__body::before {
+  content: ''; position: absolute; z-index: -1;
+  left: -2.3rem; top: -0.8rem;
+  width: 105.1rem; height: 18.2rem;
+  border-radius: 50%;
+  background: rgba(24, 24, 24, .67);
+  filter: blur(3.5rem);
+}
+.trust-slide__title {
+  font-weight: 600; font-size: 2.7rem; line-height: 3.24rem;
+  text-transform: uppercase;
+}
+/* фреймы абзацев в макете разные (849/923/933) — разбивку держат <br>,
+   ширина здесь только страховка от расползания */
+.trust-slide__text { font-size: 2rem; line-height: 2.4rem; margin-top: 1.1rem; max-width: 93.3rem; }
+.trust-slide__text .accent { color: var(--c-accent); }
+
+.faq { background: var(--c-bg-light); padding: 5rem 0; }
+.faq__title { margin: 3.3rem 0 4rem; }
+.faq__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+/* высоту строки держит стрелка 48px: по макету поля 14.5px сверху и снизу */
+.faq__item {
+  background: var(--c-bg-soft);
+  border-radius: 1.5rem;
+  padding: 1.45rem 2rem;
+}
+.faq__q {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  text-align: left;
+  font-weight: 500; font-size: 2.3rem; line-height: 2.76rem;
+  color: var(--c-dark-2);
+}
+/* свернутый пункт — темный круг со стрелкой вниз, раскрытый — красный со стрелкой вверх */
+.faq__toggle {
+  flex-shrink: 0;
+  width: 4.8rem; height: 4.8rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #231F20; color: var(--c-white);
+  transition: transform .25s ease, background .2s ease;
+}
+.faq__item.is-open .faq__toggle {
+  background: var(--c-accent);
+  transform: rotate(180deg);
+}
+/* плавное раскрытие: 0fr → 1fr анимирует реальную высоту содержимого,
+   без magic-числа max-height и без пересчета в JS */
+/* отступ от вопроса живет на контейнере и анимируется вместе с высотой:
+   padding на самом тексте не клипается строкой 0fr и держит лишние 10px */
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  padding-top: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows .38s cubic-bezier(.22, .61, .36, 1),
+    padding-top .38s cubic-bezier(.22, .61, .36, 1),
+    visibility .38s;
+}
+.faq__answer > * { overflow: hidden; min-height: 0; }
+.faq__item.is-open .faq__answer {
+  grid-template-rows: 1fr;
+  padding-top: 1rem;
+  visibility: visible;
+}
+.faq__a {
+  font-size: 1.9rem; line-height: 2.28rem; color: var(--c-text);
+  max-width: 72.5rem;
+  opacity: 0; transform: translateY(-0.4rem);
+  transition: opacity .3s ease .06s, transform .3s ease .06s;
+}
+.faq__item.is-open .faq__a { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__answer, .faq__a, .faq__toggle { transition: none; }
+}
+
+.other-services { background: var(--c-bg-light); padding: 5rem 0; }
+.other-services__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4rem;
+  align-items: center;
+  margin: 3.3rem 0 4rem;
+}
+.other-services__lead { font-size: 2rem; line-height: 2.4rem; max-width: 94.8rem; }
+.other-services__lead .accent { color: var(--c-accent); }
+.other-services__slider { overflow: hidden; }
+.other-services .service-card__photo { border-radius: 2rem; }

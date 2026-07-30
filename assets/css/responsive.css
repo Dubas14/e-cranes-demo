@@ -53,6 +53,42 @@ body.menu-open { overflow: hidden; }
   .header__row { padding: 16px 0 18px; }
 
   .hero__lead { margin: 34px 0 60px; }
+  /* ниже 1280 rem фиксирован — макетная геометрия в rem дает зум, возвращаем cover */
+  .hero__bg, .hero--modern .hero__bg {
+    inset: 0; width: auto; height: auto;
+    background-size: cover; background-position: center;
+  }
+  .hero--uslugi .hero__crane {
+    top: 0; bottom: 0; right: 0; width: 57%; height: auto;
+    background-size: cover; background-position: right center;
+  }
+  .hero--modern .hero__crane {
+    top: 0; bottom: 0; right: 0; width: 57%; height: auto;
+    background-size: cover; background-position: right center;
+  }
+  .hero--modern .hero__glow { right: 8%; top: 45%; width: 47%; height: 60%; }
+  .hero--mostovyh .hero__crane {
+    top: 0; bottom: 0; right: 0; width: 57%; height: auto;
+    background-size: cover; background-position: right center;
+  }
+  .hero--mostovyh .hero__glow,
+  .hero--koz .hero__glow,
+  .hero--port .hero__glow,
+  .hero--smart .hero__glow { inset: auto; right: 8%; top: 45%; width: 47%; height: 60%; background: radial-gradient(50% 50% at 50% 50%, rgba(226, 44, 66, .45) 0%, transparent 70%); }
+  .hero--koz .hero__crane, .hero--port .hero__crane, .hero--smart .hero__crane {
+    top: 0; bottom: 0; right: 0; width: 57%; height: auto;
+    background-size: cover; background-position: right center;
+  }
+  .hero--koz, .hero--port, .hero--smart { min-height: 0; }
+  /* ниже 1280 макетная высота hero не действует — контент задает ее сам */
+  .hero--hub { min-height: 0; }
+  .hero--hub .hero__lead { margin: 34px 0 60px; max-width: none; }
+
+  .hub-services__grid { gap: 30px; }
+  .advantages--mosaic .advantages__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .advantages--serv .advantages__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .servprog__body { grid-template-columns: minmax(0, 1fr); }
+  .servprog__col-list { border-left: 0; padding-left: 0; margin-top: 30px; }
 
   .solutions__grid { grid-template-columns: repeat(2, 1fr); }
   .stages__grid { grid-template-columns: repeat(2, 1fr); }
@@ -68,6 +104,69 @@ body.menu-open { overflow: hidden; }
 
 @media (max-width: 1023px) {
   body { font-size: 18px; }
+
+  .hub-services { padding: 40px 0 30px; }
+  .hub-services__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 28px; }
+  .hub-services__title { margin: 20px 0 12px; }
+  .hub-services__lead { font-size: 17px; line-height: 1.3; }
+  .service-card__body,
+  .service-card--text-wide .service-card__body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-top: 18px; }
+  .service-card__title { font-size: 22px; line-height: 1.2; }
+  .service-card__text { font-size: 15px; line-height: 1.25; padding-left: 16px; }
+  .service-card__btn { height: 52px; font-size: 17px; margin-top: 18px; }
+  .advantages__lead { font-size: 17px; line-height: 1.3; }
+  .advantages--mosaic .advantages__title { margin: 20px 0 12px; }
+  .advantages--mosaic .advantages__grid { gap: 16px; margin-top: 28px; }
+  .advantages--mosaic .advantage-card { min-height: 0; }
+  .advantages--mosaic .advantage-card__text { max-width: none; }
+  .advantages__photo { min-height: 180px; }
+
+  .experts { padding: 40px 0 30px; }
+  .experts__grid { grid-template-columns: minmax(0, 1fr); }
+  .experts__box { padding: 28px 24px 30px; }
+  .experts__photo { min-height: 320px; }
+  .experts__text { font-size: 17px; line-height: 1.3; }
+  .experts__alert-title { font-size: 21px; line-height: 1.2; }
+  .experts__alert-text { font-size: 16px; line-height: 1.3; }
+  .experts__btn { font-size: 17px; min-height: 52px; }
+
+  .formats__grid, .repair__grid, .faq__grid { grid-template-columns: minmax(0, 1fr); }
+  .format-card__title { font-size: 24px; }
+  .format-card__list li, .format-card__subtitle { font-size: 17px; line-height: 1.25; }
+  .repair-card { min-height: 0; }
+  .repair-card__title { font-size: 21px; margin-top: 24px; }
+  .repair-card__text { font-size: 17px; line-height: 1.3; }
+
+  .servprog__tabs { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .servprog__tab { min-height: 52px; font-size: 17px; }
+  .servprog__head { padding: 28px 24px 26px; }
+  .servprog__name { font-size: 26px; line-height: 1.2; }
+  .servprog__subtitle, .servprog__col-text p, .servprog__foot-text { font-size: 17px; line-height: 1.3; }
+  .servprog__body { padding: 28px 24px; }
+  .servprog__list-title { font-size: 21px; }
+  .servprog__item-title { font-size: 19px; }
+  /* на узком макетный вынос текста за колонку не нужен */
+  .servprog__item-text { font-size: 16px; margin-right: 0; }
+  .servprog__foot { grid-template-columns: minmax(0, 1fr); padding: 24px; }
+  /* макетная сетка 148/106/148 держится только на десктопе */
+  .servprog__brands {
+    grid-template-columns: repeat(auto-fit, minmax(96px, max-content));
+    justify-content: flex-start;
+    width: auto; max-width: none; margin-left: 0;
+  }
+  .servprog__brand { padding: 0 14px; }
+
+  .outsource__head, .trust__head, .other-services__head { flex-wrap: wrap; gap: 20px; }
+  .other-services__head { grid-template-columns: minmax(0, 1fr); }
+  .trust-slide { min-height: 0; padding: 28px 24px; }
+  .trust-slide__title { font-size: 21px; }
+  .trust-slide__text, .trust-slide__label { font-size: 16px; line-height: 1.35; }
+  .trust-slide__body { margin-top: 120px; }
+
+  .faq__q { font-size: 18px; line-height: 1.25; }
+  .faq__toggle { width: 38px; height: 38px; }
+  .faq__toggle svg { width: 16px; height: 16px; }
+  .faq__a { font-size: 16px; line-height: 1.35; }
 
   .intro { padding: 50px 0; }
   .intro__grid { grid-template-columns: 1fr; }
@@ -119,6 +218,37 @@ body.menu-open { overflow: hidden; }
   .breadcrumbs { padding-top: 20px; font-size: 12px; }
   .hero__title { margin-top: 22px; }
   .hero__lead { font-size: 17px; margin: 24px 0 44px; }
+  .hero--hub .hero__lead { margin: 24px 0 44px; }
+  /* десктопное кадрирование не годится на узком блоке — обратно в cover */
+  .hero--uslugi .hero__crane {
+    background-image: url('../img/hero-crane-uslugi.webp');
+    background-size: cover;
+    background-position: right center;
+  }
+
+  /* макетные переносы карточек рассчитаны на 1920 — на узких ломают колонку */
+  .service-card__title br, .service-card__text br { display: none; }
+
+  .hub-services { padding: 34px 0 24px; }
+  .hub-services__grid { gap: 20px; margin-top: 24px; }
+  .hub-services__lead { font-size: 16px; }
+  /* заголовок над описанием: в две колонки на телефоне не читается */
+  .service-card__body,
+  .service-card--text-wide .service-card__body { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 16px; }
+  .service-card__title { font-size: 20px; }
+  .service-card__text { border-left: 0; padding-left: 0; font-size: 15px; }
+  .service-card__btn { height: 48px; font-size: 16px; margin-top: 16px; }
+  .advantages__lead { font-size: 16px; }
+  .advantages--mosaic .advantages__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 24px; }
+  .advantages--serv .advantages__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .advantages__photo { min-height: 200px; }
+  .experts__photo { min-height: 240px; }
+  .format-card__head, .format-card__foot, .format-card__list { padding: 18px 16px; }
+  .format-card__title { font-size: 21px; }
+  /* на 320px бейдж со сроком не влезает рядом с заголовком */
+  .format-card__head-row { flex-wrap: wrap; gap: 10px; }
+  .format-card__badge { font-size: 16px; padding: 4px 12px; }
+  .out-card { height: 260px; }
 
   .section-badge { font-size: 13px; padding: 4px 16px; }
 
@@ -151,7 +281,8 @@ body.menu-open { overflow: hidden; }
   .stage-card--photo { min-height: 200px; }
   .stage-card__num { font-size: 32px; line-height: 1.2; }
   .stage-card__title { font-size: 21px; line-height: 1.2; }
-  .stage-card__text { font-size: 16px; }
+  /* на узком макетный вынос за колонку не нужен */
+  .stage-card__text, .stages--smart .stage-card__text { font-size: 16px; margin-right: 0; }
 
   .about__text { font-size: 17px; line-height: 1.35; }
   .about__highlight-title { font-size: 20px; line-height: 1.25; }
