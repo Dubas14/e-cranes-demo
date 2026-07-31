@@ -74,12 +74,14 @@ body.menu-open { overflow: hidden; }
   .hero--mostovyh .hero__glow,
   .hero--koz .hero__glow,
   .hero--port .hero__glow,
+  .hero--kranbalok .hero__glow,
   .hero--smart .hero__glow { inset: auto; right: 8%; top: 45%; width: 47%; height: 60%; background: radial-gradient(50% 50% at 50% 50%, rgba(226, 44, 66, .45) 0%, transparent 70%); }
-  .hero--koz .hero__crane, .hero--port .hero__crane, .hero--smart .hero__crane {
+  .hero--koz .hero__crane, .hero--port .hero__crane, .hero--smart .hero__crane,
+  .hero--kranbalok .hero__crane {
     top: 0; bottom: 0; right: 0; width: 57%; height: auto;
     background-size: cover; background-position: right center;
   }
-  .hero--koz, .hero--port, .hero--smart { min-height: 0; }
+  .hero--koz, .hero--port, .hero--smart, .hero--kranbalok { min-height: 0; }
   /* ниже 1280 макетная высота hero не действует — контент задает ее сам */
   .hero--hub { min-height: 0; }
   .hero--hub .hero__lead { margin: 34px 0 60px; max-width: none; }
@@ -97,6 +99,11 @@ body.menu-open { overflow: hidden; }
   .stats__cards { max-width: 820px; }
   .footer__cols { grid-template-columns: 1fr 1fr; }
   .footer__contacts { grid-template-columns: auto 1fr; }
+  /* пятна затемнения посчитаны под макетные 1620×546 — ниже 1280 сетка баннера
+     перестраивается, и они попадают мимо текста; хватает ровной подложки */
+  .diag__shade { background: rgba(24, 24, 24, .55); }
+  .reasons__shade { background: linear-gradient(180deg, rgba(24, 24, 24, .35) 0%, rgba(24, 24, 24, .72) 100%); }
+
   .diag__grid { grid-template-columns: 1fr; padding: 40px 30px; min-height: 0; }
   .diag__phone-block { margin-top: 40px; }
   .geo__clients { justify-content: center; }
@@ -191,7 +198,7 @@ body.menu-open { overflow: hidden; }
   .consult__row { grid-template-columns: 1fr; }
   .consult__box { padding: 28px 24px 32px; }
 
-  .cases__head, .other__head, .geo__head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .cases__head, .other__head, .geo__head, .safety__head { flex-direction: column; align-items: flex-start; gap: 24px; }
   .case-card { height: auto; min-height: 340px; }
 
   .geo__stat { position: static; width: auto; max-width: 447px; margin-bottom: 20px; }
@@ -205,15 +212,30 @@ body.menu-open { overflow: hidden; }
   .modal__box { padding: 32px 64px 36px 28px; }
   .modal__close { top: 24px; right: 24px; }
   .modal__text, .modal__label, .modal__list { font-size: 19px; line-height: 1.3; }
+
+  /* десктопные строки в rem держат пропорцию фото — на узких экранах
+     колонок меньше, высоту задает контент, фото — aspect-ratio ячейки */
+  .keyfunc__grid, .whenneed__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .keyfunc__grid { grid-template-rows: auto; }
+  .keyfunc-photo { aspect-ratio: 526 / 268; }
+  .when-photo { aspect-ratio: 526 / 268; }
+  .keyfunc-card__title, .when-card__title { min-width: 0; overflow-wrap: anywhere; font-size: 21px; }
 }
 
 @media (max-width: 767px) {
   body { font-size: 17px; }
   .container { width: min(var(--container), 100% - 32px); }
 
+  /* на 320 длинные слова («противораскачивания») шире колонки: переносим
+     по слогам, а не выпихиваем страницу вбок */
+  .section-title, .safety__head > div { hyphens: auto; min-width: 0; }
+  .keyfunc__grid, .whenneed__grid { grid-template-columns: minmax(0, 1fr); }
+
   .hero__crane { width: 100%; opacity: .45; background-image: url('../img/hero-crane-768.webp'); }
   .hero--koz .hero__crane { background-image: url('../img/hero-crane-koz-768.webp'); }
   .hero--port .hero__crane { background-image: url('../img/hero-crane-port-768.webp'); }
+  /* отдельного 768-ассета для кран-балок нет — держим десктопный рендер */
+  .hero--kranbalok .hero__crane { background-image: url('../img/hero-crane-kranbalok.webp'); }
   .hero__overlay { background: linear-gradient(90deg, rgba(24, 24, 24, .9) 0%, rgba(24, 24, 24, .55) 100%); }
   .breadcrumbs { padding-top: 20px; font-size: 12px; }
   .hero__title { margin-top: 22px; }
@@ -287,7 +309,8 @@ body.menu-open { overflow: hidden; }
   .about__text { font-size: 17px; line-height: 1.35; }
   .about__highlight-title { font-size: 20px; line-height: 1.25; }
   .about__highlight-text { font-size: 16px; }
-  .about__btn { margin-top: 28px; width: 100%; }
+  /* фиксированная ширина кнопки из десктопного модификатора шире экрана */
+  .about__btn, .about--intellect .about__btn { margin-top: 28px; width: 100%; }
 
   .stats__cards { grid-template-columns: 1fr; }
   .stats__btn { width: 100%; }
@@ -342,6 +365,8 @@ body.menu-open { overflow: hidden; }
   .mobile-menu__list a { font-size: 21px; }
   .effect-card { min-height: 220px; }
   .geo__logo { width: calc(50% - 10px); }
+  /* в бегущей строке ряд не переносится: процент от трека дал бы рост без предела */
+  .geo__clients.is-marquee .geo__logo { width: 110px; }
 }
 
 @media (hover: none) and (pointer: coarse) {

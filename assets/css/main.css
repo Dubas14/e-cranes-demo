@@ -17,6 +17,16 @@
   src: url('../fonts/montserrat-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* ₽ нет ни в кириллическом, ни в латинском сабсете — без этого файла символ
+   рисовался фолбэком (Arial с size-adjust) и вылезал за строку */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url('../fonts/montserrat-ruble.woff2') format('woff2');
+  unicode-range: U+20BD;
+}
 /* при font-display: block этот шрифт НЕ рисуется — он только держит геометрию,
    пока woff2 в пути, чтобы рамки и линии не дергались. Коэффициент разный по
    весам: у Arial свое соотношение regular/bold, одним числом не сходится */
@@ -289,11 +299,17 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
 }
+/* затемнение по макету: подложка-градиент + две размытые «кляксы» (Figma layer
+   blur 70/40 = blur(7rem)/blur(4rem)) — под текстом и под стрелками */
+/* пятна затемнения макета (Ellipse 2497/2507, layer blur 70/40) — фоновыми
+   радиальными градиентами, а не отдельными слоями: filter: blur() и mask-image
+   заводят слой композитора, и по его боксу виден ровный контур */
 .reasons__shade {
   position: absolute; inset: 0;
   background:
-    linear-gradient(100deg, rgba(20, 20, 20, .68) 0%, rgba(20, 20, 20, .28) 34%, rgba(20, 20, 20, 0) 58%),
-    linear-gradient(180deg, rgba(20, 20, 20, 0) 48%, rgba(20, 20, 20, .30) 100%);
+    radial-gradient(43.9rem 16.1rem at 39.6rem 41.6rem, rgba(24, 24, 24, .72) 20%, rgba(24, 24, 24, 0) 100%),
+    radial-gradient(12.7rem 9.1rem at calc(100% - 10.8rem) 47rem, rgba(24, 24, 24, .7) 20%, rgba(24, 24, 24, 0) 100%),
+    linear-gradient(90deg, rgba(24, 24, 24, .76), rgba(24, 24, 24, .11));
 }
 .reasons__top {
   position: absolute; top: 7.2rem; left: 5rem; right: 5rem;
@@ -305,12 +321,6 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   position: absolute; left: 5rem; bottom: 5rem;
   max-width: 88.1rem;
   z-index: 1;
-}
-.reasons__body::before {
-  content: '';
-  position: absolute; inset: -6rem -12rem -4rem -8rem;
-  background: radial-gradient(60% 70% at 40% 60%, rgba(24, 24, 24, .72) 0%, transparent 100%);
-  z-index: -1;
 }
 .reasons__heading {
   font-weight: 600; font-size: 2.7rem; line-height: 3.2rem;
@@ -427,6 +437,23 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 @media (prefers-reduced-motion: reduce) {
   .modal__box { animation: none; }
 }
+/* попап «Заказать звонок»: та же модалка, но узкая — поля берутся
+   от формы консультации, чтобы не заводить второй стиль полей */
+.modal__box--form {
+  width: min(56rem, 100%);
+  padding: 4.4rem 4rem;
+}
+.modal__box--form .modal__close { top: 3rem; right: 3rem; }
+.modal__box--form .modal__text { font-size: 2rem; line-height: 2.4rem; margin-top: 1.4rem; }
+.callback__form { display: grid; gap: 1.6rem; margin-top: 2.8rem; }
+.callback__form .consult__agree {
+  margin-top: 0.4rem;
+  font-size: 1.7rem; line-height: 2.2rem;
+  align-items: flex-start;
+}
+.callback__form .consult__checkbox { width: 2.2rem; height: 2.2rem; margin-top: 0.1rem; }
+.callback__submit { height: 6.5rem; font-size: 2rem; margin-top: 0.8rem; }
+
 .modal__close {
   position: absolute; top: 3.6rem; right: 4rem;
   color: var(--c-accent);
@@ -967,6 +994,10 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 /* padding-top (не margin на карте!) — margin коллапсирует с оберткой,
    и карта не отодвигается от плашки «40+» */
+/* якорь формы заявки: небольшой зазор сверху, чтобы секция не упиралась
+   в край экрана после прокрутки от кнопок заказа */
+#zayavka { scroll-margin-top: 3rem; }
+
 .geo__map-wrap { position: relative; margin-top: 3rem; padding-top: 8.5rem; }
 .geo__stat {
   position: absolute; top: 0; left: 2px; z-index: 1;
@@ -983,13 +1014,35 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .geo__stat-caption {
   font-size: 2rem; line-height: 2.4rem; color: #292929;
 }
-.geo__map { width: 100%; height: auto; }
+/* карта подключена как <object>: подсветка региона по наведению живет
+   внутри самого svg, из документа стили в него не достают */
+.geo__map { display: block; width: 100%; height: auto; aspect-ratio: 1620 / 846; }
 .geo__clients {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;
   border-top: 1px solid var(--c-line);
   border-bottom: 1px solid var(--c-line);
   padding: 2rem 0;
   margin-top: 3.8rem;
+}
+/* бегущая строка: JS оборачивает логотипы в трек и дублирует его, две копии
+   едут на свою ширину + gap — стык незаметен */
+.geo__clients.is-marquee {
+  flex-wrap: nowrap; justify-content: flex-start;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6rem, #000 calc(100% - 6rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6rem, #000 calc(100% - 6rem), transparent);
+}
+.geo__track {
+  display: flex; align-items: center; gap: 2rem;
+  flex-shrink: 0;
+  animation: geo-marquee 45s linear infinite;
+}
+.geo__clients.is-marquee:hover .geo__track { animation-play-state: paused; }
+@keyframes geo-marquee {
+  to { transform: translateX(calc(-100% - 2rem)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .geo__track { animation: none; }
 }
 .geo__logo {
   background: #F4F4F4;
@@ -1059,9 +1112,17 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
 }
+/* как в reasons: ровная подложка + размытые пятна под заголовком, под формой
+   и синеватое под телефоном (Figma layer blur 70/40) */
+/* тем же способом, что и в reasons: пятна — фоновые градиенты, без слоев.
+   Синеватое под телефоном (Ellipse 2498) — усредненный цвет его градиента */
 .diag__shade {
   position: absolute; inset: 0;
-  background: rgba(24, 24, 24, .45);
+  background:
+    radial-gradient(41.2rem 14.4rem at 36.9rem 16.4rem, rgba(24, 24, 24, .7) 20%, rgba(24, 24, 24, 0) 100%),
+    radial-gradient(47rem 9.9rem at calc(100% - 45rem) 35.9rem, rgba(24, 24, 24, .84) 20%, rgba(24, 24, 24, 0) 100%),
+    radial-gradient(23.7rem 9.3rem at 22.2rem 41.3rem, rgba(53, 77, 96, .9) 20%, rgba(53, 77, 96, 0) 100%),
+    rgba(24, 24, 24, .34);
 }
 .diag__grid {
   position: relative; z-index: 1;
@@ -1079,12 +1140,10 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   font-size: 2rem; line-height: 2.4rem;
   max-width: 66.1rem;
   margin-top: 0.6rem;
-  text-shadow: 0 0 2.4rem rgba(24, 24, 24, .8);
 }
 .diag__phone-block {
   font-size: 2rem; line-height: 3rem;
   margin-top: 13rem;
-  text-shadow: 0 0 2.4rem rgba(24, 24, 24, .8);
 }
 .diag__phone {
   display: inline-block;
@@ -1291,6 +1350,43 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
     radial-gradient(59.7rem 23.4rem at 154.8rem 31.3rem, rgba(226, 44, 66, .49), transparent 70%),
     radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%),
     radial-gradient(43.5rem 22rem at 170rem 49.4rem, rgba(3, 43, 249, .30), transparent 70%);
+}
+
+/* «Ремонт козловых»: слой рендера тот же, что у «Модернизации козловых»
+   (imageRef совпадает), а подсветка своя — Ellipse 110 здесь 1101,262 при
+   894x102, то есть повторяет мостовые; фрейм лида 838 */
+.hero--remont-koz .hero__lead--wide { max-width: 83.8rem; }
+.hero--remont-koz .hero__glow {
+  background:
+    radial-gradient(59.7rem 20.1rem at 154.8rem 31.3rem, rgba(226, 44, 66, .49), transparent 70%),
+    radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%),
+    radial-gradient(43.5rem 22rem at 170rem 49.4rem, rgba(3, 43, 249, .30), transparent 70%);
+}
+
+/* «Ремонт портальных»: рендер тот же, что у «Модернизации портальных», а
+   подсветка здесь всего из двух эллипсов — синего Ellipse 109 в макете нет */
+.hero--remont-port .hero__lead { max-width: 95.1rem; }
+.hero--remont-port .hero__glow {
+  background:
+    radial-gradient(59.7rem 20.1rem at 154.8rem 31.3rem, rgba(226, 44, 66, .49), transparent 70%),
+    radial-gradient(41rem 24.5rem at 131.2rem 38.8rem, rgba(226, 44, 66, .35), transparent 70%);
+}
+
+/* «Ремонт кран-балок»: свой рендер (слой 1156,-20 при 1026x684) и подсветка
+   одним эллипсом 1121,212 при 894x161 */
+.hero--kranbalok { min-height: 50.3rem; }
+.hero--kranbalok .hero__title { margin-top: 3.9rem; }
+.hero--kranbalok .hero__lead { margin: 0.6rem 0 6rem; }
+.hero--kranbalok .hero__lead--wide { max-width: 92.7rem; }
+.hero--kranbalok .hero__crane {
+  background-image: url('../img/hero-crane-kranbalok.webp');
+  top: -2rem; bottom: auto; left: auto; right: -26.2rem;
+  width: 102.6rem; height: 68.4rem;
+  background-size: 100% 100%;
+}
+.hero--kranbalok .hero__glow {
+  inset: 0; width: auto; height: auto;
+  background: radial-gradient(59.7rem 23.05rem at 156.8rem 29.25rem, rgba(226, 44, 66, .49), transparent 70%);
 }
 
 .hero--uslugi .hero__glow {
@@ -1570,14 +1666,14 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
    Зазор дает padding колонки, а не gap, иначе правая колонка уже макетных 709 */
 .servprog__body {
   display: grid;
-  grid-template-columns: minmax(0, 80.7rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 75.8rem) minmax(0, 1fr);
   padding: 4.5rem 5.2rem 4rem;
 }
 .servprog__col-text { max-width: 74.9rem; }
 .servprog__col-text p { font-size: 2rem; line-height: 2.4rem; }
 .servprog__col-text p + p { margin-top: 2rem; }
 .servprog__col-text .accent { color: var(--c-accent); }
-.servprog__col-list { border-left: 1px solid var(--c-line); padding-left: 5.2rem; }
+.servprog__col-list { border-left: 1px solid var(--c-line); padding-left: 4.9rem; }
 .servprog__list-title { font-weight: 500; font-size: 2.5rem; line-height: 3rem; }
 .servprog__item { margin-top: 2.3rem; }
 .servprog__item-title {
@@ -1585,9 +1681,9 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   padding-left: 2.6rem;
   background: url('../img/rem-gear-red.svg') no-repeat 0 0.4rem / 1.7rem 1.7rem;
 }
-/* текст-фреймы пунктов в макете 719/603 против колонки 657 — доходят до края
-   карточки, иначе «…программируемых логических» рвется лишний раз */
-.servprog__item-text { font-size: 1.9rem; line-height: 2.28rem; margin-top: 0.5rem; margin-right: -6.2rem; }
+/* текст-фреймы пунктов в макете 719 при колонке 709: выносим на 10px вправо —
+   иначе «…программируемых логических» рвется лишний раз */
+.servprog__item-text { font-size: 1.9rem; line-height: 2.28rem; margin-top: 0.5rem; margin-right: -1rem; }
 .servprog__foot {
   background: var(--c-bg-soft);
   display: grid;
@@ -1731,11 +1827,11 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 /* Ellipse 2497: подложка 1051x182, заливка .67, layer blur 70 */
 .trust-slide__body::before {
   content: ''; position: absolute; z-index: -1;
-  left: -2.3rem; top: -0.8rem;
-  width: 105.1rem; height: 18.2rem;
-  border-radius: 50%;
-  background: rgba(24, 24, 24, .67);
-  filter: blur(3.5rem);
+  /* бокс расширен на радиус размытия макета, растушевка — самим градиентом:
+     filter: blur() рисуется отдельным слоем, и его бокс виден ровным контуром */
+  left: -5.8rem; top: -4.3rem;
+  width: 112.1rem; height: 25.2rem;
+  background: radial-gradient(closest-side, rgba(24, 24, 24, .67) 20%, rgba(24, 24, 24, 0) 100%);
 }
 .trust-slide__title {
   font-weight: 600; font-size: 2.7rem; line-height: 3.24rem;
@@ -1753,22 +1849,27 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 }
-/* высоту строки держит стрелка 48px: по макету поля 14.5px сверху и снизу */
+/* строка с раскрытой карточкой не растягивает соседей (класс вешает JS) */
+.faq__item--fit { align-self: start; }
+/* поля считаются от текста (25/24 по макету), не от стрелки: при однострочном
+   вопросе это дает те же 77, при двухстрочном — 105, а не 84 */
 .faq__item {
   background: var(--c-bg-soft);
   border-radius: 1.5rem;
-  padding: 1.45rem 2rem;
+  padding: 2.5rem 2rem 2.4rem;
 }
 .faq__q {
   width: 100%;
-  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 0.4rem;
   text-align: left;
-  font-weight: 500; font-size: 2.3rem; line-height: 2.76rem;
+  font-weight: 500; font-size: 2.3rem; line-height: 2.8rem;
   color: var(--c-dark-2);
 }
 /* свернутый пункт — темный круг со стрелкой вниз, раскрытый — красный со стрелкой вверх */
 .faq__toggle {
   flex-shrink: 0;
+  /* высоту пункта задает текст, а не стрелка: она выходит за поля симметрично */
+  margin-block: -1rem;
   width: 4.8rem; height: 4.8rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: #231F20; color: var(--c-white);

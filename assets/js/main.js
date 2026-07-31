@@ -169,14 +169,50 @@ document.addEventListener('DOMContentLoaded', () => {
       const open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', open ? 'false' : 'true');
       if (item) item.classList.toggle('is-open', !open);
+      const grid = btn.closest('.faq__grid');
+      if (grid) syncFaqRows(grid);
     });
   });
+
+  // Строка с раскрытой карточкой не растягивает соседей по высоте; остальные
+  // строки остаются выровненными. Ряды считаются по offsetTop — работает и на
+  // одноколоночном мобильном.
+  function syncFaqRows(grid) {
+    const items = [...grid.querySelectorAll('.faq__item')];
+    items.forEach((el) => el.classList.remove('faq__item--fit'));
+    const rows = new Map();
+    items.forEach((el) => {
+      const top = el.offsetTop;
+      if (!rows.has(top)) rows.set(top, []);
+      rows.get(top).push(el);
+    });
+    rows.forEach((row) => {
+      if (row.some((el) => el.classList.contains('is-open'))) {
+        row.forEach((el) => el.classList.add('faq__item--fit'));
+      }
+    });
+  }
+
+  const faqGrids = document.querySelectorAll('.faq__grid');
+  if (faqGrids.length) {
+    let faqResizeId;
+    window.addEventListener('resize', () => {
+      clearTimeout(faqResizeId);
+      faqResizeId = setTimeout(() => faqGrids.forEach(syncFaqRows), 150);
+    });
+  }
 
   // Формы — заглушка отправки (интеграция на этапе Битрикса)
   document.querySelectorAll('form').forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       // TODO: отправка на бэкенд Битрикса
+      const modal = form.closest('.modal');
+      if (modal) {
+        form.reset();
+        modal.hidden = true;
+        document.body.style.overflow = '';
+      }
     });
   });
 
@@ -208,8 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const openModal = (modal) => {
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
-    const closeBtn = modal.querySelector('.modal__close');
-    if (closeBtn) closeBtn.focus();
+    // в попапе с формой курсор сразу в поле, в текстовом — на крестике
+    const first = modal.querySelector('.callback__form input') || modal.querySelector('.modal__close');
+    if (first) first.focus();
   };
   const closeModal = (modal) => {
     modal.hidden = true;
@@ -219,7 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-popup]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const modal = document.getElementById(btn.dataset.popup);
-      if (modal) openModal(modal);
+      if (!modal) return;
+      // из мобильного меню: сначала закрыть его, иначе попап окажется под ним
+      const burgerBtn = document.querySelector('.burger');
+      const menu = document.getElementById('mobile-menu');
+      if (menu && !menu.hidden && burgerBtn) burgerBtn.click();
+      openModal(modal);
     });
   });
 
@@ -265,4 +307,47 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && !mobileMenu.hidden) closeMenu();
     });
   }
+
+  // Кнопки заказа ведут к форме заявки (#zayavka — консультация, а на
+  // страницах без нее баннер диагностики). Ссылки-кнопки уходят туда же
+  // через href, здесь только <button>
+  const orderTarget = document.getElementById('zayavka');
+  if (orderTarget) {
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll(
+      '.about__btn, .stats__btn, .geo__cta'
+    ).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (mobileMenu && !mobileMenu.hidden) {
+          const burger = document.querySelector('.burger');
+          if (burger) burger.click();
+        }
+        orderTarget.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+        const field = orderTarget.querySelector('input, textarea');
+        // фокус после прокрутки, иначе браузер доводит ее рывком
+        if (field) setTimeout(() => field.focus({ preventScroll: true }), smooth ? 700 : 0);
+      });
+    });
+  }
+
+  // Логотипы клиентов — бегущая строка: оборачиваем в трек и дублируем его,
+  // копия нужна, чтобы лента не обрывалась на стыке
+  document.querySelectorAll('.geo__clients').forEach((row) => {
+    const logos = [...row.children];
+    if (!logos.length) return;
+    const track = document.createElement('div');
+    track.className = 'geo__track';
+    logos.forEach((el) => track.appendChild(el));
+    // класс до замеров: пока ряд с flex-wrap, трек переносит логотипы
+    // и его ширина равна ширине ряда, а не сумме элементов
+    row.classList.add('is-marquee');
+    row.appendChild(track);
+    // трек уже ряда — на стыке копий появится пустота, добиваем повторами
+    for (let i = 0; track.offsetWidth < row.offsetWidth && i < 40; i++) {
+      track.appendChild(logos[i % logos.length].cloneNode(true));
+    }
+    const clone = track.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    row.appendChild(clone);
+  });
 });

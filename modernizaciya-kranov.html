@@ -41,7 +41,7 @@
             <a class="header__phone" href="tel:+74955874338">8 (495) 587-43-38</a>
             <span class="header__hours">ПН-ПТ 09:00-18:00</span>
           </div>
-          <button class="btn header__cta" type="button">Заказать звонок</button>
+          <button class="btn header__cta" type="button" data-popup="popup-callback">Заказать звонок</button>
           <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
             <span></span><span></span><span></span>
           </button>
@@ -63,7 +63,7 @@
         <div class="mobile-menu__contacts">
           <a class="mobile-menu__phone" href="tel:+74955874338">8 (495) 587-43-38</a>
           <span class="header__hours">ПН-ПТ 09:00-18:00</span>
-          <button class="btn" type="button">Заказать звонок</button>
+          <button class="btn" type="button" data-popup="popup-callback">Заказать звонок</button>
         </div>
       </div>
 
@@ -215,7 +215,7 @@
     </div>
   </section>
 
-  <section class="diag">
+  <section class="diag" id="zayavka">
     <div class="container">
       <div class="diag__box" data-reveal>
         <img class="diag__bg" src="assets/img/diag-bg.webp" alt="" loading="lazy">
@@ -225,7 +225,7 @@
             <h2 class="diag__title">Диагностика от 29.000₽</h2>
             <p class="diag__text">
               При выполнении технического обслуживания, ремонта, модернизации
-              у нас&nbsp;<span class="accent">диагностика проводится <b>БЕСПЛАТНО</b></span>&nbsp;— ее стоимость полностью
+              у нас&nbsp;<span class="accent">диагностика проводится БЕСПЛАТНО</span>&nbsp;— ее стоимость полностью
               засчитывается в счет будущих работ
             </p>
             <div class="diag__phone-block">
@@ -309,12 +309,35 @@
     </div>
     <hr>
     <div class="container footer__bottom">
-      <span>© 2012-2025 ООО «КРЕЙНС ИНЖИНИРИНГ»</span>
+      <span>© 2012-2026 ООО «КРЕЙНС ИНЖИНИРИНГ»</span>
       <a href="#">Политика конфиденциальности</a>
     </div>
   </footer>
 
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <div class="modal" id="popup-callback" role="dialog" aria-modal="true" aria-labelledby="popup-callback-title" hidden>
+    <div class="modal__box modal__box--form">
+      <button class="modal__close" type="button" aria-label="Закрыть">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M3 3l24 24M27 3L3 27" stroke="currentColor" stroke-width="4"/></svg>
+      </button>
+      <h3 class="modal__title" id="popup-callback-title">Заказать звонок</h3>
+      <p class="modal__text">
+        Оставьте номер — перезвоним в рабочее время,
+        <span class="accent">ПН-ПТ 09:00-18:00.</span>
+      </p>
+      <form class="callback__form" action="#" method="post">
+        <input class="consult__input" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input class="consult__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+        <label class="consult__agree">
+          <input type="checkbox" name="agree" required>
+          <span class="consult__checkbox" aria-hidden="true"></span>
+          Я соглашаюсь с условиями политики конфиденциальности
+        </label>
+        <button class="btn callback__submit" type="submit">Жду звонка</button>
+      </form>
+    </div>
+  </div>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
