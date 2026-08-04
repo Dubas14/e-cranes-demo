@@ -1982,10 +1982,14 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .mega__col--root .mega__item a:hover::after,
 .mega__col--root .mega__item.is-active a::after { border-left-color: var(--c-accent); }
 
-/* главная: hero 1220 c плашкой направлений, прижатой к низу */
+/* главная: hero занимает окно целиком. Единица --u — «макетный пиксель»
+   этого экрана: макет 1920x1220 вписывается по узкому измерению, поэтому
+   на низком мониторе банер сжимается вместе с содержимым, а не вылезает */
 .hero--main {
+  --u: min(1rem, 100vh / 122);
   display: flex; flex-direction: column;
-  min-height: 122rem;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 .hero--main > .container { display: flex; flex-direction: column; flex-grow: 1; }
 .hero__bg--main {
@@ -1996,41 +2000,46 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 /* две черты над заголовком: длинная белая и короткая красная поверх нее */
 .hero__decor {
   position: relative;
-  width: 17.8rem; height: 1px;
+  width: calc(17.8 * var(--u)); height: 1px;
   background: rgba(255, 255, 255, .5);
-  margin-top: 9.2rem;
+  margin-top: calc(9.2 * var(--u));
 }
 .hero__decor::after {
   content: ''; position: absolute; inset: 0 auto 0 0;
-  width: 9.2rem; background: var(--c-accent);
+  width: calc(9.2 * var(--u)); background: var(--c-accent);
 }
 .hero__title--main {
-  font-size: 13rem; line-height: 0.93;
+  font-size: calc(13 * var(--u)); line-height: 0.93;
   font-weight: 600; text-transform: uppercase;
-  margin-top: 2rem;
+  margin-top: calc(2 * var(--u));
 }
 .hero__directions {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  background: #0D1720; border-radius: 2rem;
-  height: 26.2rem;
-  margin: auto 0 7rem;
+  background: #0D1720; border-radius: calc(2 * var(--u));
+  height: calc(26.2 * var(--u));
+  margin: auto 0 calc(7 * var(--u));
 }
-.direction { padding: 3.8rem 0 0 3.1rem; }
+.direction { padding: calc(3.8 * var(--u)) 0 0 calc(3.1 * var(--u)); }
 .direction + .direction { border-left: 1px solid rgba(255, 255, 255, .2); }
 .direction__title {
   position: relative;
-  font-weight: 500; font-size: 3rem; line-height: 3.6rem;
+  font-weight: 500; font-size: calc(3 * var(--u)); line-height: 1.2;
   text-transform: uppercase;
-  padding-top: 1.4rem;
+  padding-top: calc(1.4 * var(--u));
 }
 .direction__title::before {
   content: ''; position: absolute; left: 0; top: 0;
-  width: 5rem; height: 2px; background: var(--c-accent);
+  width: calc(5 * var(--u)); height: 2px; background: var(--c-accent);
 }
 .direction__text {
-  font-size: 2.4rem; line-height: 2.9rem;
-  margin-top: 1.6rem;
+  font-size: calc(2.4 * var(--u)); line-height: 1.2;
+  margin-top: calc(1.6 * var(--u));
 }
+/* текст-фреймы колонок по макету (345/345/374/373) — иначе при сжатии
+   баннера строки перетекают и разбивка уезжает от макетной */
+.direction:nth-child(-n+2) .direction__text { max-width: calc(34.5 * var(--u)); }
+.direction:nth-child(3) .direction__text { max-width: calc(37.4 * var(--u)); }
+.direction:nth-child(4) .direction__text { max-width: calc(37.3 * var(--u)); }
 
 .hub-services--main { padding-bottom: 5rem; }
 .hub-services--main .hub-services__lead { max-width: 125.4rem; }

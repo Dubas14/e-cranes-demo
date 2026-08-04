@@ -63,8 +63,11 @@ body.menu-open { overflow: hidden; }
   .page-remont-koz .faq__q span br,
   .page-remont-koz .format-card__subtitle br { display: none; }
 
-  /* главная: 1220 макета держатся на rem — ниже 1280 отдаем высоту контенту */
-  .hero--main { min-height: 0; }
+  /* главная: 1220 макета держатся на rem — ниже 1280 отдаем высоту контенту,
+     а масштабную единицу баннера возвращаем к обычному rem, иначе calc-и
+     из main.css сожмут декор и колонки под высоту окна */
+  .hero--main { --u: 1rem; min-height: 0; }
+  .direction__text { max-width: none; }
   .hero__title--main { font-size: 90px; margin-top: 16px; }
   .hero__decor { margin-top: 60px; }
   .hero__directions { height: auto; margin: 60px 0 50px; }
