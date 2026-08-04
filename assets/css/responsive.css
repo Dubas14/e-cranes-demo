@@ -66,6 +66,13 @@ body.menu-open { overflow: hidden; }
   /* главная: 1220 макета держатся на rem — ниже 1280 отдаем высоту контенту,
      а масштабную единицу баннера возвращаем к обычному rem, иначе calc-и
      из main.css сожмут декор и колонки под высоту окна */
+  /* макетное пятно-подложка 1121x252 шире слайда уже с 1097 и не накрывает
+     текст; вместо него — ровное затемнение всего слайда, иначе текст лежит
+     на пестром фото и красный акцент на светлых участках не читается */
+  .trust-slide__body::before { display: none; }
+  .trust-slide__shade {
+    background: linear-gradient(90deg, rgba(24, 24, 24, .9) 0%, rgba(24, 24, 24, .74) 100%);
+  }
   .hero--main { --u: 1rem; min-height: 0; }
   .direction__text { max-width: none; }
   .hero__title--main { font-size: 90px; margin-top: 16px; }
