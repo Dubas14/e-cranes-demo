@@ -245,6 +245,8 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 .hero__lead .accent { color: var(--c-accent); }
 .hero__lead--wide { max-width: 90.3rem; }
+/* лид ремонта козловых — текст-фрейм макета 973 */
+.hero__lead--xwide { max-width: 97.3rem; }
 
 .intro {
   background: var(--c-bg-light);
@@ -1324,6 +1326,7 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .hero--koz .hero__title, .hero--port .hero__title { margin-top: 3.9rem; }
 .hero--koz .hero__lead, .hero--port .hero__lead { margin: 0.6rem 0 6rem; }
 .hero--koz .hero__lead--wide { max-width: 90.3rem; }
+.hero--koz .hero__lead--xwide { max-width: 97.3rem; }
 .hero--port .hero__lead { max-width: 85rem; }
 
 .hero--koz .hero__crane {
@@ -1535,7 +1538,8 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 
 .formats { background: var(--c-bg-light); padding: 5rem 0; }
-.formats__title { margin: 3.3rem 0 4rem; }
+/* заголовок в макете козловых — фрейм 1182, иначе перенос уезжает */
+.formats__title { margin: 3.3rem 0 4rem; max-width: 118.2rem; }
 .formats__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1715,6 +1719,8 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 
 /* мозаика преимуществ сервисных программ: 3 колонки, заголовки без капса */
+/* заголовок секции в макете козловых — фрейм 1200, иначе перенос уезжает */
+.advantages--serv .advantages__title { max-width: 120rem; }
 .advantages--serv .advantages__grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.1rem;
@@ -1729,6 +1735,9 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 /* глифы выгружены из макета в своих размерах (26–40px) — не растягиваем */
 .advantages--serv .advantage-card__icon img { max-width: 4rem; max-height: 4rem; }
 .advantages--serv .advantage-card__text { font-size: 1.9rem; line-height: 2.28rem; margin-top: 1.5rem; }
+/* текст-фрейм макета 496 при карточке 526: правый отступ 9, а не 21 —
+   иначе «выезд поддерживают краны в работоспособном» не вмещается */
+.advantages--serv .advantage-card { padding-right: 0.9rem; }
 .advantages--serv .advantage-card__title { padding-bottom: 1.2rem; }
 .advantages--serv .advantages__title { margin: 3.3rem 0 0; }
 
@@ -1923,3 +1932,162 @@ a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .other-services__lead .accent { color: var(--c-accent); }
 .other-services__slider { overflow: hidden; }
 .other-services .service-card__photo { border-radius: 2rem; }
+
+/* мега-меню «Услуги»: две панели по макету — корневая 351x391 и подменю
+   360x229 со сдвигом 22px вниз; открывается по наведению и по клику */
+.header__nav-item.has-mega { position: relative; }
+.mega {
+  position: absolute; top: calc(100% + 1.4rem); left: 0; z-index: 20;
+  display: flex; align-items: flex-start;
+  opacity: 0; visibility: hidden; transform: translateY(-0.6rem);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+.has-mega:hover .mega,
+.has-mega.is-open .mega { opacity: 1; visibility: visible; transform: none; }
+.mega__col {
+  background: var(--c-bg-soft);
+  border-radius: 0.8rem;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, .25);
+  padding: 1rem 1.2rem;
+  color: var(--c-text);
+}
+.header__nav .mega ul { display: block; gap: 0; }
+.mega__col--root { width: 35.1rem; }
+.mega__col--sub {
+  margin: 2.2rem 0 0 0.9rem;
+  padding-block: 0.4rem;
+  opacity: 0; visibility: hidden;
+  transition: opacity .2s ease, visibility .2s;
+}
+.mega__col--sub.is-shown { opacity: 1; visibility: visible; }
+/* «Перевод кранов на радиоуправление» — 335px по макету; Chrome в 360-панель
+   его не вмещает, поэтому панель на 10px шире макетной */
+.mega__col--sub { width: 37rem; padding-inline: 1rem; }
+.mega__col--sub .mega__item a { padding-right: 0; }
+.mega__item + .mega__item { border-top: 1px solid var(--c-line); }
+.header__nav .mega__item a {
+  display: block; position: relative;
+  white-space: normal;
+  font-size: 1.6rem; line-height: 1.9rem;
+  padding: 1.25rem 2.6rem 1.25rem 0;
+  transition: color .2s ease;
+}
+.mega__item a:hover, .mega__item.is-active a { color: var(--c-accent); }
+.mega__col--root .mega__item a::after {
+  content: ''; position: absolute; right: 0.8rem; top: 50%;
+  width: 0; height: 0; margin-top: -0.6rem;
+  border: 0.6rem solid transparent; border-left: 1rem solid var(--c-dark-2);
+  transition: border-color .2s ease;
+}
+.mega__col--root .mega__item a:hover::after,
+.mega__col--root .mega__item.is-active a::after { border-left-color: var(--c-accent); }
+
+/* главная: hero 1220 c плашкой направлений, прижатой к низу */
+.hero--main {
+  display: flex; flex-direction: column;
+  min-height: 122rem;
+}
+.hero--main > .container { display: flex; flex-direction: column; flex-grow: 1; }
+.hero__bg--main {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  background: url('../img/main-hero-bg.webp') center / cover no-repeat;
+}
+/* две черты над заголовком: длинная белая и короткая красная поверх нее */
+.hero__decor {
+  position: relative;
+  width: 17.8rem; height: 1px;
+  background: rgba(255, 255, 255, .5);
+  margin-top: 9.2rem;
+}
+.hero__decor::after {
+  content: ''; position: absolute; inset: 0 auto 0 0;
+  width: 9.2rem; background: var(--c-accent);
+}
+.hero__title--main {
+  font-size: 13rem; line-height: 0.93;
+  font-weight: 600; text-transform: uppercase;
+  margin-top: 2rem;
+}
+.hero__directions {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #0D1720; border-radius: 2rem;
+  height: 26.2rem;
+  margin: auto 0 7rem;
+}
+.direction { padding: 3.8rem 0 0 3.1rem; }
+.direction + .direction { border-left: 1px solid rgba(255, 255, 255, .2); }
+.direction__title {
+  position: relative;
+  font-weight: 500; font-size: 3rem; line-height: 3.6rem;
+  text-transform: uppercase;
+  padding-top: 1.4rem;
+}
+.direction__title::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 5rem; height: 2px; background: var(--c-accent);
+}
+.direction__text {
+  font-size: 2.4rem; line-height: 2.9rem;
+  margin-top: 1.6rem;
+}
+
+.hub-services--main { padding-bottom: 5rem; }
+.hub-services--main .hub-services__lead { max-width: 125.4rem; }
+.hub-services__all { display: flex; justify-content: center; margin-top: 5rem; }
+.hub-services__all .btn { width: 37.5rem; height: 6.5rem; font-size: 2rem; }
+/* «Продукция»: карточки без описания — заголовок занимает всю ширину */
+.hub-services--prod { padding-top: 5rem; }
+.hub-services--prod .hub-services__lead { max-width: 135rem; }
+.service-card--plain .service-card__body { display: block; }
+.service-card--plain .service-card__title { padding-right: 0; }
+
+.about-us { background: var(--c-bg-light); padding: 5rem 0; }
+.about-us__title { margin: 3.3rem 0 1.4rem; }
+.about-us__lead { font-size: 2rem; line-height: 2.4rem; }
+.about-us__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem; margin-top: 4.5rem;
+}
+.about-card {
+  background: var(--c-white); border: 1px solid var(--c-line-light);
+  border-radius: 1.5rem;
+  min-height: 32rem;
+  padding: 2rem 2rem 2.4rem;
+}
+.about-card--grey { background: var(--c-bg-soft); border-color: transparent; }
+.about-card__icon {
+  width: 6.5rem; height: 6.5rem; border-radius: 50%;
+  background: #231F20;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-card__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 2rem;
+  margin-top: 1.4rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--c-line);
+}
+.about-card__title {
+  font-weight: 500; font-size: 2.5rem; line-height: 3rem;
+  text-transform: uppercase; color: var(--c-accent);
+}
+.about-card__num { font-size: 2.5rem; line-height: 3rem; color: var(--c-text); }
+.about-card__list { margin-top: 2.2rem; display: grid; gap: 1rem; }
+.about-card__list li {
+  position: relative;
+  font-size: 2rem; line-height: 2.4rem; color: #292929;
+  padding-left: 2.5rem;
+}
+/* маркер макета — красное кольцо 15px с заливкой 9px */
+.about-card__list li::before {
+  content: ''; position: absolute; left: 0; top: 0.45rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  border: 1px solid var(--c-accent);
+  background: radial-gradient(circle, var(--c-accent) 0 0.45rem, transparent 0.45rem);
+}
+
+.promo { background: var(--c-bg-light); padding-bottom: 5rem; }
+.promo__photo {
+  width: 100%; height: 54.6rem; object-fit: cover;
+  border-radius: 2rem;
+}

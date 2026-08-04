@@ -330,6 +330,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Мега-меню «Услуги»: подменю привязано к пункту через data-mega,
+  // на тач-устройствах первый тап по пункту с подменю раскрывает его
+  const mega = document.querySelector('.header__nav-item.has-mega');
+  if (mega) {
+    const subs = [...mega.querySelectorAll('[data-mega-sub]')];
+    const showSub = (key) => {
+      subs.forEach((s) => s.classList.toggle('is-shown', s.dataset.megaSub === key));
+      mega.querySelectorAll('[data-mega]').forEach((item) => {
+        item.classList.toggle('is-active', item.dataset.mega === key);
+      });
+    };
+    mega.querySelectorAll('.mega__col--root .mega__item').forEach((item) => {
+      item.addEventListener('mouseenter', () => showSub(item.dataset.mega || ''));
+    });
+    mega.addEventListener('mouseleave', () => showSub(''));
+
+    const coarse = window.matchMedia('(hover: none)').matches;
+    if (coarse) {
+      const trigger = mega.querySelector(':scope > a');
+      trigger.addEventListener('click', (e) => {
+        if (!mega.classList.contains('is-open')) {
+          e.preventDefault();
+          mega.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+      mega.querySelectorAll('[data-mega]').forEach((item) => {
+        item.querySelector('a').addEventListener('click', (e) => {
+          const key = item.dataset.mega;
+          if (!item.classList.contains('is-active')) {
+            e.preventDefault();
+            showSub(key);
+          }
+        });
+      });
+      document.addEventListener('click', (e) => {
+        if (!mega.contains(e.target)) {
+          mega.classList.remove('is-open');
+          mega.querySelector(':scope > a').setAttribute('aria-expanded', 'false');
+          showSub('');
+        }
+      });
+    }
+  }
+
   // Логотипы клиентов — бегущая строка: оборачиваем в трек и дублируем его,
   // копия нужна, чтобы лента не обрывалась на стыке
   document.querySelectorAll('.geo__clients').forEach((row) => {

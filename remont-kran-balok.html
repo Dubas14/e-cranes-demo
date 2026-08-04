@@ -24,13 +24,36 @@
     <div class="container">
       <header class="header">
         <div class="header__row">
-          <a class="header__logo" href="/">
+          <a class="header__logo" href="index.html">
             <img src="assets/img/logo-light.svg" alt="CRANES ENGINEERING" width="140" height="43">
           </a>
           <nav class="header__nav" aria-label="Основное меню">
             <ul>
               <li><a href="#">О компании</a></li>
-              <li><a href="uslugi.html">Услуги</a></li>
+              <li class="header__nav-item has-mega">
+                <a href="uslugi.html" aria-haspopup="true" aria-expanded="false">Услуги</a>
+                <div class="mega">
+                  <ul class="mega__col mega__col--root">
+                    <li class="mega__item is-parent" data-mega="modernizaciya">
+                      <a href="modernizaciya-kranov.html">Модернизация кранов</a>
+                    </li>
+                    <li class="mega__item"><a href="avtomatizaciya-kranov.html">Автоматизация кранов</a></li>
+                    <li class="mega__item"><a href="#">Удаленное управление кранами</a></li>
+                    <li class="mega__item"><a href="remont-mostovyh-kranov.html">Ремонт грузоподъемных кранов</a></li>
+                    <li class="mega__item"><a href="#">Техническое обслуживание кранов</a></li>
+                    <li class="mega__item"><a href="#">Диагностика<br>и комплексное обследование</a></li>
+                    <li class="mega__item"><a href="#">Монтаж индустриальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Ремонт крановых путей</a></li>
+                  </ul>
+                  <ul class="mega__col mega__col--sub" data-mega-sub="modernizaciya">
+                    <li class="mega__item"><a href="modernizaciya-kozlovyh-kranov.html">Модернизация козловых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-mostovyh-kranov.html">Модернизация мостовых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-portalnyh-kranov.html">Модернизация портальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Перевод кранов на радиоуправление</a></li>
+                    <li class="mega__item"><a href="smart-opcii-dlya-kranov.html">Смарт опции для кранов</a></li>
+                  </ul>
+                </div>
+              </li>
               <li><a href="#">Продукция</a></li>
               <li><a href="#">Документация</a></li>
               <li><a href="#">Наши работы</a></li>
@@ -68,7 +91,7 @@
       </div>
 
       <nav class="breadcrumbs" aria-label="Хлебные крошки">
-        <a href="#">Главная</a>/ <a href="uslugi.html">Услуги</a>/<a href="#">Ремонт грузоподъемных кранов</a>/<span class="breadcrumbs__current">Ремонт кран-балок</span>
+        <a href="index.html">Главная</a>/ <a href="uslugi.html">Услуги</a>/<a href="#">Ремонт грузоподъемных кранов</a>/<span class="breadcrumbs__current">Ремонт кран-балок</span>
       </nav>
 
       <h1 class="hero__title">Ремонт кран-балок</h1>
@@ -858,7 +881,7 @@
     </div>
     <hr>
     <div class="container footer__cols">
-      <a class="footer__logo" href="/">
+      <a class="footer__logo" href="index.html">
         <img src="assets/img/logo-dark.svg" alt="CRANES ENGINEERING" width="273" height="84">
       </a>
       <div class="footer__col">

@@ -48,6 +48,31 @@ body.menu-open { overflow: hidden; }
    1439/1679 не нужны. */
 
 @media (max-width: 1279px) {
+  /* ниже 1280 rem фиксирован и колонки уже макетных — жёсткие переносы,
+     расставленные по строкам Figma, начинают рвать текст в клочья.
+     Гасим только там, где в разметке перед <br> стоит пробел, иначе слова слипнутся */
+  .page-remont-koz .hero__lead br,
+  .page-remont-koz .experts__text br,
+  .page-remont-koz .repair-card__text br,
+  .page-remont-koz .advantage-card__text br,
+  .page-remont-koz .servprog__col-text p br,
+  .page-remont-koz .servprog__item-text br,
+  .page-remont-koz .servprog__foot-text br,
+  .page-remont-koz .out-card__text br,
+  .page-remont-koz .trust-slide__text br,
+  .page-remont-koz .faq__q span br,
+  .page-remont-koz .format-card__subtitle br { display: none; }
+
+  /* главная: 1220 макета держатся на rem — ниже 1280 отдаем высоту контенту */
+  .hero--main { min-height: 0; }
+  .hero__title--main { font-size: 90px; margin-top: 16px; }
+  .hero__decor { margin-top: 60px; }
+  .hero__directions { height: auto; margin: 60px 0 50px; }
+  .direction { padding: 26px 20px; }
+  .direction__title { font-size: 24px; line-height: 1.2; padding-top: 14px; }
+  .direction__text { font-size: 18px; line-height: 1.3; margin-top: 12px; }
+  .hub-services__all .btn { width: auto; height: 52px; font-size: 17px; }
+  .promo__photo { height: 380px; }
   .header__nav, .header__contacts, .header__cta { display: none; }
   .burger { display: block; margin-left: auto; }
   .header__row { padding: 16px 0 18px; }
@@ -110,6 +135,23 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 1023px) {
+  .hero__title--main { font-size: 64px; }
+  .hero__directions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .direction:nth-child(3) { border-left: 0; }
+  .direction:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, .2); }
+
+  .about-us { padding: 40px 0 30px; }
+  .about-us__title { margin: 20px 0 12px; }
+  .about-us__lead { font-size: 17px; line-height: 1.3; }
+  .about-us__grid { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 28px; }
+  .about-card { min-height: 0; padding: 18px 18px 22px; }
+  .about-card__icon { width: 52px; height: 52px; }
+  .about-card__icon img { width: 30px; height: auto; }
+  .about-card__title, .about-card__num { font-size: 20px; line-height: 1.2; }
+  .about-card__list li { font-size: 16px; line-height: 1.3; padding-left: 22px; }
+  .about-card__list li::before { top: 4px; width: 13px; height: 13px; }
+  .promo { padding-bottom: 30px; }
+  .promo__photo { height: 300px; border-radius: 14px; }
   body { font-size: 18px; }
 
   .hub-services { padding: 40px 0 30px; }
@@ -223,6 +265,19 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 767px) {
+  .hero__title--main { font-size: 42px; margin-top: 14px; }
+  .hero__decor { margin-top: 34px; width: 120px; }
+  .hero__decor::after { width: 62px; }
+  .hero__directions {
+    grid-template-columns: minmax(0, 1fr);
+    margin: 40px 0 36px; border-radius: 14px;
+  }
+  .direction { padding: 20px 18px; }
+  .direction + .direction { border-left: 0; border-top: 1px solid rgba(255, 255, 255, .2); }
+  .direction:nth-child(3) { border-left: 0; }
+  .direction__title { font-size: 20px; }
+  .direction__text { font-size: 16px; }
+  .promo__photo { height: 220px; }
   body { font-size: 17px; }
   .container { width: min(var(--container), 100% - 32px); }
 

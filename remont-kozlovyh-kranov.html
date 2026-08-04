@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-<body>
+<body class="page-remont-koz">
 
   <section class="hero hero--koz hero--remont-koz">
     <div class="hero__bg"></div>
@@ -24,13 +24,36 @@
     <div class="container">
       <header class="header">
         <div class="header__row">
-          <a class="header__logo" href="/">
+          <a class="header__logo" href="index.html">
             <img src="assets/img/logo-light.svg" alt="CRANES ENGINEERING" width="140" height="43">
           </a>
           <nav class="header__nav" aria-label="Основное меню">
             <ul>
               <li><a href="#">О компании</a></li>
-              <li><a href="uslugi.html">Услуги</a></li>
+              <li class="header__nav-item has-mega">
+                <a href="uslugi.html" aria-haspopup="true" aria-expanded="false">Услуги</a>
+                <div class="mega">
+                  <ul class="mega__col mega__col--root">
+                    <li class="mega__item is-parent" data-mega="modernizaciya">
+                      <a href="modernizaciya-kranov.html">Модернизация кранов</a>
+                    </li>
+                    <li class="mega__item"><a href="avtomatizaciya-kranov.html">Автоматизация кранов</a></li>
+                    <li class="mega__item"><a href="#">Удаленное управление кранами</a></li>
+                    <li class="mega__item"><a href="remont-mostovyh-kranov.html">Ремонт грузоподъемных кранов</a></li>
+                    <li class="mega__item"><a href="#">Техническое обслуживание кранов</a></li>
+                    <li class="mega__item"><a href="#">Диагностика <br>и комплексное обследование</a></li>
+                    <li class="mega__item"><a href="#">Монтаж индустриальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Ремонт крановых путей</a></li>
+                  </ul>
+                  <ul class="mega__col mega__col--sub" data-mega-sub="modernizaciya">
+                    <li class="mega__item"><a href="modernizaciya-kozlovyh-kranov.html">Модернизация козловых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-mostovyh-kranov.html">Модернизация мостовых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-portalnyh-kranov.html">Модернизация портальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Перевод кранов на радиоуправление</a></li>
+                    <li class="mega__item"><a href="smart-opcii-dlya-kranov.html">Смарт опции для кранов</a></li>
+                  </ul>
+                </div>
+              </li>
               <li><a href="#">Продукция</a></li>
               <li><a href="#">Документация</a></li>
               <li><a href="#">Наши работы</a></li>
@@ -68,12 +91,16 @@
       </div>
 
       <nav class="breadcrumbs" aria-label="Хлебные крошки">
-        <a href="#">Главная</a>/ <a href="uslugi.html">Услуги</a>/<a href="#">Ремонт грузоподъемных кранов</a>/<span class="breadcrumbs__current">Ремонт козловых кранов</span>
+        <a href="index.html">Главная</a>/ <a href="uslugi.html">Услуги</a>/<a href="#">Ремонт грузоподъемных кранов</a>/<span class="breadcrumbs__current">Ремонт козловых кранов</span>
       </nav>
 
       <h1 class="hero__title">Ремонт козловых кранов</h1>
-      <p class="hero__lead hero__lead--wide">
-        Возвращаем козловым кранам <span class="accent">полную техническую исправность,</span> устраняя повреждения металлоконструкций, механизмов передвижения, подъемных<br>узлов и электрических систем.
+      <p class="hero__lead hero__lead--xwide">
+        <span class="accent">Восстанавливаем техническую исправность козловых кранов любой грузоподъёмности:</span><br>
+        устраняем повреждения металлоконструкций, механизмов передвижения, подъёмных <br>
+        узлов и электрооборудования. Профессиональная диагностика, замена изношенных <br>
+        деталей и настройка механизмов предотвращают внеплановые простои, повышают <br>
+        производительность и обеспечивают безопасность на производстве.
       </p>
     </div>
   </section>
@@ -85,15 +112,20 @@
       <div class="experts__grid">
         <div class="experts__box" data-reveal>
           <p class="experts__text">
-            <b><span class="accent">Крейнс</span> Инжиниринг</b> специализированная инжиниринговая компания
-            <span class="accent">с 15-летним опытом</span> в области обслуживания и ремонта промышленного
-            кранового оборудования.
+            <b><span class="accent">Cranes</span> Engineering</b> — инжиниринговая компания с 15-летним <br>
+            опытом в обслуживании и ремонте промышленного <br>
+            грузоподъёмного оборудования. <span class="accent">Мы специализируемся <br>
+            на ремонте козловых кранов и сотрудничаем с ведущими <br>
+            предприятиями России:</span> металлургическими заводами, <br>
+            портовыми операторами, машиностроительными <br>
+            производствами и складскими терминалами.
           </p>
           <p class="experts__text">
-            Восстанавливаем работоспособность козловых кранов любой грузоподъемности
-            <span class="accent">за 3-7 дней с гарантией 12 месяцев.</span> Наши специалисты знают, что каждый час
-            простоя крана — это убытки для производства, поэтому работаем
-            <span class="accent">быстро, качественно<br>и с минимальным временем простоя</span> оборудования.
+            Компания восстанавливает работоспособность козловых кранов <br>
+            грузоподъёмностью от 5 до 500 тонн <span class="accent">в срок от 3 до 7 дней с <br>
+            гарантией 12 месяцев.</span> Каждый час простоя крана — это <br>
+            производственные потери, поэтому наши бригады работают <br>
+            оперативно и с минимальным временем простоя оборудования.
           </p>
           <div class="experts__alert">
             <p class="experts__alert-title">Аварийная служба 24/7</p>
@@ -109,23 +141,24 @@
   <section class="formats">
     <div class="container">
       <span class="section-badge">Форматы ремонта</span>
-      <h2 class="section-title formats__title">Ремонт любой сложности: от текущего до капитального</h2>
+      <h2 class="section-title formats__title">Ремонт козловых кранов любой сложности: от текущего до капитального</h2>
       <div class="formats__grid">
         <article class="format-card" data-reveal>
           <div class="format-card__head">
             <div class="format-card__head-row">
-              <h3 class="format-card__title">Текущий ремонт</h3>
+              <h3 class="format-card__title">Текущий ремонт козлового крана</h3>
               <span class="format-card__badge">3-5 дней</span>
             </div>
-            <p class="format-card__subtitle">Плановое восстановление работоспособности механизмов крана</p>
+            <p class="format-card__subtitle">Плановое восстановление механизмов, устранение мелких неисправностей и замена быстроизнашиваемых деталей.</p>
           </div>
           <ul class="format-card__list">
             <li>Диагностика механизмов и электрооборудования</li>
             <li>Замена тормозных колодок и регулировка тормозов</li>
             <li>Замена грузовых канатов и крюковой подвески</li>
-            <li>Замена подшипников и быстроизнашиваемых деталей</li>
-            <li>Обслуживание редукторов и замена смазочных материалов</li>
-            <li>Проверка и настройка электроприводов и систем управления</li>
+            <li>Замена подшипников и изнашиваемых деталей</li>
+            <li>Замена изношенных ходовых колёс</li>
+            <li>Обслуживание редукторов, замена смазки</li>
+            <li>Настройка электроприводов и систем управления</li>
             <li>Регулировка конечных выключателей и устройств безопасности</li>
           </ul>
           <div class="format-card__foot">
@@ -137,19 +170,20 @@
         <article class="format-card format-card--accent" data-reveal>
           <div class="format-card__head">
             <div class="format-card__head-row">
-              <h3 class="format-card__title">Капитальный ремонт</h3>
+              <h3 class="format-card__title">Капитальный ремонт козлового крана</h3>
               <span class="format-card__badge">15- 30 дней</span>
             </div>
-            <p class="format-card__subtitle">Комплексное восстановление ресурса кранового оборудования</p>
+            <p class="format-card__subtitle">Комплексное восстановление ресурса с полной разборкой и заменой изношенных узлов.</p>
           </div>
           <ul class="format-card__list">
-            <li>Полная техническая диагностика механизмов крана</li>
-            <li>Капитальный ремонт механизмов подъема и передвижения</li>
-            <li>Ремонт или замена редукторов, валов и подшипниковых узлов</li>
-            <li>Замена электродвигателей, тормозов и грузовых канатов</li>
-            <li>Замена колесных блоков и ходовых колес</li>
-            <li>Замена шкафов управления, кабельных линий и электрооборудования</li>
-            <li>Комплексные испытания и пусконаладочные работы</li>
+            <li>Полная диагностика с неразрушающим контролем</li>
+            <li>Капремонт механизмов подъёма и передвижения</li>
+            <li>Ремонт/замена редукторов, валов, подшипниковых узлов</li>
+            <li>Замена электродвигателей, тормозов, грузовых канатов</li>
+            <li>Замена колёсных блоков и ходовых колёс</li>
+            <li>Ремонт металлоконструкций, усиление трещин</li>
+            <li>Ремонт подкрановых путей, нивелировка</li>
+            <li>Статические и динамические испытания, пусконаладка</li>
           </ul>
           <div class="format-card__foot">
             <p class="format-card__note">Гарантия <span class="accent">до 24 месяцев</span> на выполненные работы</p>
@@ -168,26 +202,25 @@
         <article class="repair-card" data-reveal>
           <img class="repair-card__icon" src="assets/img/rem-gear-red-33.svg" alt="" width="33" height="33">
           <h3 class="repair-card__title">Ремонт козловых кранов</h3>
-          <p class="repair-card__text">Ремонт козловых кранов выполняется для восстановления<br>исправной и безопасной работы грузоподъемного оборудования<br>на промышленных объектах. Работы направлены на <span class="accent">устранение<br>неисправностей и обеспечение стабильной эксплуатации</span> крана.</p>
+          <p class="repair-card__text">Ремонт козловых кранов выполняется для восстановления <br>исправной и безопасной работы грузоподъемного оборудования <br>на промышленных объектах. Работы направлены на <span class="accent">устранение <br>неисправностей и обеспечение стабильной эксплуатации</span> крана.</p>
         </article>
 
         <article class="repair-card" data-reveal>
           <img class="repair-card__icon" src="assets/img/rem-gear-red-33.svg" alt="" width="33" height="33">
           <h3 class="repair-card__title">Диагностика и выявление неисправностей</h3>
-          <p class="repair-card__text">В процессе ремонта козловых кранов <span class="accent">проводится диагностика<br>механических узлов, электрооборудования и металлоконструкций.</span><br>Это позволяет точно определить причину неисправности и выбрать оптимальный способ восстановления.</p>
+          <p class="repair-card__text">В процессе ремонта козлового крана проводится диагностика <br>механических узлов, электрооборудования и металлоконструкций. <br>Диагностика включает визуальный осмотр, ультразвуковую <br>дефектоскопию и магнитопорошковый контроль металла. Это <br><span class="accent">позволяет точно определить причину неисправности и выбрать <br>оптимальный способ восстановления.</span></p>
         </article>
 
         <article class="repair-card" data-reveal>
           <img class="repair-card__icon" src="assets/img/rem-gear-red-33.svg" alt="" width="33" height="33">
           <h3 class="repair-card__title">Виды ремонтных работ</h3>
-          <p class="repair-card__text">Ремонт козловых кранов включает <span class="accent">восстановление и замену<br>редукторов, тормозных систем, колесных пар, электродвигателей и<br>элементов управления.</span> При необходимости выполняется<br>капитальный ремонт козловых кранов.</p>
+          <p class="repair-card__text">Ремонт козловых кранов включает восстановление и замену <br>редукторов, тормозных систем, колёсных пар, электродвигателей <br>и элементов управления. При значительном износе выполняется <br><span class="accent">капитальный ремонт козлового крана с заменой большинства <br>узлов и модернизацией оборудования.</span></p>
         </article>
 
         <article class="repair-card" data-reveal>
           <img class="repair-card__icon" src="assets/img/rem-gear-red-33.svg" alt="" width="33" height="33">
           <h3 class="repair-card__title">Проверка и ввод в эксплуатацию</h3>
-          <p class="repair-card__text">После завершения работ <span class="accent">оборудование проходит испытания, настройку и проверку всех систем.</span>
-            Это обеспечивает безопасную эксплуатацию и продлевает срок службы козлового крана.</p>
+          <p class="repair-card__text">После завершения работ козловой кран <span class="accent">проходит статические <br>и динамические испытания, настройку и проверку всех систем.</span><br>Испытания подтверждают безопасную эксплуатацию и <br>продлевают срок службы козлового крана.</p>
         </article>
       </div>
     </div>
@@ -207,32 +240,32 @@
         <div class="servprog__head">
           <span class="servprog__badge">Сервисная программа</span>
           <p class="servprog__name">Квартальный контроль</p>
-          <p class="servprog__subtitle">Системный подход к обслуживанию кранового оборудования с проверкой раз в квартал</p>
+          <p class="servprog__subtitle">Системный подход к обслуживанию козловых кранов с проверкой раз в квартал</p>
         </div>
         <div class="servprog__body">
           <div class="servprog__col-text">
-            <p>Программа квартального контроля предлагает <span class="accent">системный подход<br>к обслуживанию кранового оборудования,</span> позволяя предприятиям<br>сосредоточиться на ключевых бизнес-процессах, доверив<br>техническое сопровождение надежным профессионалам.</p>
-            <p>Сервисная программа ориентирована на предприятия, стремящиеся обеспечить <span class="accent">плановое техническое обслуживание индустриальных кранов,</span> включая мостовые, козловые и портальные модели.</p>
-            <p>Обслуживание проводится раз в квартал или по индивидуально согласованному графику, что позволяет <span class="accent">адаптировать сервис под специфические потребности производства.</span></p>
+            <p>Программа квартального контроля предлагает <span class="accent">системный подход <br>к обслуживанию кранового оборудования,</span> позволяя предприятиям <br>сосредоточиться на ключевых бизнес-процессах, доверив <br>техническое сопровождение профильным специалистам.</p>
+            <p>Сервисная программа ориентирована на предприятия, которым <br>необходимо <span class="accent">плановое техническое обслуживание индустриальных <br>кранов</span> — козловых, мостовых и портальных моделей.</p>
+            <p>Обслуживание козлового крана проводится раз в квартал или <br>по индивидуально согласованному графику, что позволяет <br><span class="accent">адаптировать сервис под специфику производства.</span></p>
           </div>
           <div class="servprog__col-list">
             <p class="servprog__list-title">В рамках программы выполняются:</p>
             <div class="servprog__item">
               <p class="servprog__item-title">Комплексная диагностика</p>
-              <p class="servprog__item-text">Проверка механических и электрических систем крана, включая состояние основных узлов и агрегатов.</p>
+              <p class="servprog__item-text">Проверка механических и электрических систем козлового крана, <br>включая состояние основных узлов и агрегатов.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Обслуживание электрооборудования</p>
-              <p class="servprog__item-text">Проверка частотных преобразователей, программируемых логических<br>контроллеров (ПЛК) и других компонентов системы управления.</p>
+              <p class="servprog__item-text">Проверка частотных преобразователей, программируемых логических <br>контроллеров (ПЛК) и других компонентов системы управления.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Профилактические мероприятия</p>
-              <p class="servprog__item-text">Выявление и устранение потенциальных неисправностей<br>до их перехода в критическое состояние.</p>
+              <p class="servprog__item-text">Выявление и устранение потенциальных неисправностей <br>до их перехода в критическое состояние.</p>
             </div>
           </div>
         </div>
         <div class="servprog__foot">
-          <p class="servprog__foot-text">Компания <b><span class="accent">Крейнс</span> Инжиниринг</b> обладает обширным опытом работы с кранами российских и европейских производителей. Наши специалисты осуществляют деятельность на всей территории Российской Федерации, обеспечивая высокий уровень сервиса независимо от географического расположения вашего предприятия.</p>
+          <p class="servprog__foot-text">Компания <b><span class="accent">Крейнс</span> Инжиниринг</b> обладает обширным опытом работы с козловыми кранами <br>российских и европейских производителей. Специалисты работают на всей территории <br>Российской Федерации, обеспечивая высокий уровень сервиса независимо <br>от расположения предприятия.</p>
           <div class="servprog__brands">
             <span class="servprog__brand">Konecranes</span>
             <span class="servprog__brand">Demag</span>
@@ -252,18 +285,18 @@
         </div>
         <div class="servprog__body">
           <div class="servprog__col-text">
-            <p>Сервисная программа регулярного технического обслуживания мостовых, козловых и портальных кранов. Включает <span class="accent">проверку механической и электрической частей,</span> включая частотные преобразователи, ПЛК и системы автоматизации.</p>
-            <p>Обслуживание проводится по регламенту производителей и требованиям законодательства РФ. Программа «Ежемесячный контроль» обеспечивает <span class="accent">системный подход к техническому обслуживанию кранов,</span> позволяя предприятиям сосредоточиться на производственных задачах, передав обслуживание профильным специалистам.</p>
+            <p>Сервисная программа регулярного технического обслуживания <br>мостовых, козловых и портальных кранов. Включает <span class="accent">проверку <br>механической и электрической частей,</span> включая частотные <br>преобразователи, ПЛК и системы автоматизации.</p>
+            <p>Обслуживание проводится по регламенту производителей <br>и требованиям законодательства РФ. Программа «Ежемесячный <br>контроль» обеспечивает <span class="accent">системный подход к техническому <br>обслуживанию кранов,</span> позволяя предприятиям сосредоточиться <br>на производственных задачах, передав обслуживание профильным <br>специалистам.</p>
           </div>
           <div class="servprog__col-list">
             <p class="servprog__list-title">Преимущества программы:</p>
             <div class="servprog__item">
               <p class="servprog__item-title">Регулярный контроль</p>
-              <p class="servprog__item-text">Ежемесячное обслуживание позволяет выявлять проблемы на ранней стадии.</p>
+              <p class="servprog__item-text">Ежемесячное обслуживание позволяет выявлять <br>неисправности козлового крана на ранней стадии.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Соответствие нормам</p>
-              <p class="servprog__item-text">Обслуживание по регламенту производителей и требованиям законодательства РФ.</p>
+              <p class="servprog__item-text">Обслуживание по регламенту производителей и требованиям <br>законодательства РФ.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Системный подход</p>
@@ -272,7 +305,7 @@
           </div>
         </div>
         <div class="servprog__foot">
-          <p class="servprog__foot-text"><b><span class="accent">Крейнс</span> Инжиниринг</b> обслуживает краны российских, европейских и азиатских марок, обеспечивая надёжную работу оборудования в условиях машиностроительных, металлургических и химических производств.</p>
+          <p class="servprog__foot-text"><b><span class="accent">Крейнс</span> Инжиниринг</b> обслуживает краны российских, европейских и азиатских марок, <br>обеспечивая надёжную работу оборудования в условиях машиностроительных, <br>металлургических и химических производств.</p>
           <div class="servprog__brands">
             <span class="servprog__brand">Konecranes</span>
             <span class="servprog__brand">Demag</span>
@@ -288,31 +321,31 @@
         <div class="servprog__head">
           <span class="servprog__badge">Премиум программа</span>
           <p class="servprog__name">Сервисный пакет 24/7</p>
-          <p class="servprog__subtitle">Максимальная готовность вашего оборудования с постоянным присутствием сервисной команды</p>
+          <p class="servprog__subtitle">Максимальная готовность оборудования с постоянным присутствием сервисной команды</p>
         </div>
         <div class="servprog__body">
           <div class="servprog__col-text">
-            <p>Сервисный пакет 24/7 — это комплексная программа, обеспечивающая <span class="accent">ежедневное техническое обслуживание индустриальных кранов,</span> включая мостовые, козловые и портальные модели.</p>
-            <p>В рамках этого пакета компания <b><span class="accent">Крейнс</span> Инжиниринг</b> организует постоянное присутствие сервисной команды непосредственно на вашем объекте, создавая локальный филиал для <span class="accent">оперативного реагирования на любые потребности.</span></p>
+            <p>Сервисный пакет 24/7 — это комплексная программа, <br>обеспечивающая <span class="accent">ежедневное техническое обслуживание <br>индустриальных кранов,</span> включая мостовые, козловые <br>и портальные модели.</p>
+            <p>В рамках этого пакета компания <b><span class="accent">Крейнс</span> Инжиниринг</b> организует <br>постоянное присутствие сервисной команды непосредственно <br>на вашем объекте, создавая локальный филиал для <span class="accent">оперативного <br>реагирования на любые потребности.</span></p>
           </div>
           <div class="servprog__col-list">
             <p class="servprog__list-title">Ключевые особенности программы:</p>
             <div class="servprog__item">
               <p class="servprog__item-title">Ежедневное техническое обслуживание</p>
-              <p class="servprog__item-text">Постоянный мониторинг и профилактика позволяют поддерживать оборудование в оптимальном состоянии, снижая вероятность поломок.</p>
+              <p class="servprog__item-text">Постоянный мониторинг и профилактика поддерживают козловой <br>кран в оптимальном состоянии, снижая вероятность поломок.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Локальный сервисный филиал</p>
-              <p class="servprog__item-text">Формирование специализированной команды на вашей площадке обеспечивает мгновенный доступ к квалифицированной помощи и сокращает время реагирования на возникающие задачи.</p>
+              <p class="servprog__item-text">Специализированная команда на вашей площадке обеспечивает <br>мгновенный доступ к квалифицированной помощи и сокращает <br>время реагирования.</p>
             </div>
             <div class="servprog__item">
               <p class="servprog__item-title">Комплексное обслуживание</p>
-              <p class="servprog__item-text">Программа охватывает все аспекты эксплуатации кранов: от механических и электрических систем до сложного электрооборудования, включая частотные преобразователи и программируемые логические контроллеры.</p>
+              <p class="servprog__item-text">Программа охватывает все аспекты эксплуатации кранов: от <br>механических и электрических систем до сложного <br>электрооборудования, включая частотные преобразователи и ПЛК.</p>
             </div>
           </div>
         </div>
         <div class="servprog__foot servprog__foot--full">
-          <p class="servprog__foot-text">Идеальное решение для предприятий с непрерывным производственным циклом, где простой оборудования недопустим.<br><b><span class="accent">Крейнс</span> Инжиниринг</b> гарантирует максимальную готовность вашего кранового парка 24 часа в сутки, 7 дней в неделю.</p>
+          <p class="servprog__foot-text">Идеальное решение для предприятий с непрерывным производственным циклом, где простой <br>оборудования недопустим — портовых хозяйств, логистических центров и металлургических <br>комбинатов. <b><span class="accent">Крейнс</span> Инжиниринг</b> гарантирует максимальную готовность кранового парка <br>24 часа в сутки, 7 дней в неделю.</p>
 
         </div>
       </div>
@@ -322,39 +355,43 @@
   <section class="advantages advantages--serv">
     <div class="container">
       <span class="section-badge">Комплексный подход</span>
-      <h2 class="section-title advantages__title">Преимущества сервисных программ</h2>
+      <h2 class="section-title advantages__title">Преимущества сервисных программ обслуживания козловых кранов</h2>
       <div class="advantages__grid">
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-downtime.svg" alt=""></span>
           <h3 class="advantage-card__title">Минимизация простоев</h3>
-          <p class="advantage-card__text">Регулярный контроль и быстрый аварийный выезд позволяют <span class="accent">поддерживать оборудование в рабочем состоянии</span> и оперативно устранять любые неисправности.</p>
+          <p class="advantage-card__text"><span class="accent">Плановый контроль и оперативный аварийный <br>выезд</span> поддерживают краны в работоспособном <br>состоянии. Критично для оборудования на <br>открытых площадках.</p>
         </article>
         <img class="advantages__photo" src="assets/img/rem-adv-1.webp" alt="" width="526" height="268" loading="lazy">
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-resource.svg" alt=""></span>
           <h3 class="advantage-card__title">Продление ресурса оборудования</h3>
-          <p class="advantage-card__text">Своевременное обслуживание и настройка<br><span class="accent">продлевают срок службы кранов на 5-10 лет</span><br>и снижают затраты на капитальный ремонт.</p>
+          <p class="advantage-card__text">Регулярное обслуживание ходовых систем, <br>рельсовых путей и металлоконструкций <br><span class="accent">увеличивает срок службы крана на 5–10 лет</span><br>и снижает затраты на капремонт.</p>
         </article>
-        <img class="advantages__photo" src="assets/img/rem-adv-2.webp" alt="" width="526" height="268" loading="lazy">
+        <article class="advantage-card" data-reveal>
+          <span class="advantage-card__icon"><img src="assets/img/rem-icon-complex.svg" alt=""></span>
+          <h3 class="advantage-card__title">Комплексный подход</h3>
+          <p class="advantage-card__text">Механика, электрика, системы управления <br>и рельсовые пути — <span class="accent">в рамках одного <br>договора, без множества подрядчиков.</span></p>
+        </article>
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-turnkey.svg" alt=""></span>
           <h3 class="advantage-card__title">Работа «под ключ»</h3>
-          <p class="advantage-card__text"><span class="accent">От диагностики до ремонта и ввода в эксплуатацию</span> — полный цикл сервисного обслуживания с получением всех документов.</p>
+          <p class="advantage-card__text"><span class="accent">Полный цикл:</span> от диагностики до ремонта и <br>ввода в эксплуатацию с оформлением всей <br>документации.</p>
         </article>
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-schedule.svg" alt=""></span>
           <h3 class="advantage-card__title">Гибкие графики обслуживания</h3>
-          <p class="advantage-card__text"><span class="accent">Подстраиваемся под производственный цикл:</span><br>работаем в ночные смены и выходные, чтобы<br>не останавливать ваше производство.</p>
+          <p class="advantage-card__text"><span class="accent">Работаем в ночные смены и выходные,</span><br>чтобы не останавливать производство, <br>порт или склад.</p>
         </article>
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-report.svg" alt=""></span>
           <h3 class="advantage-card__title">Прозрачная отчётность</h3>
-          <p class="advantage-card__text"><span class="accent">Детальные акты выполненных работ,</span> график следующих ТО, фотофиксация всех этапов, рекомендации по дальнейшей эксплуатации.</p>
+          <p class="advantage-card__text">Детальные акты, фотофиксация этапов, <br>график следующих ТО и <span class="accent">рекомендации <br>по эксплуатации.</span></p>
         </article>
         <article class="advantage-card" data-reveal>
           <span class="advantage-card__icon"><img src="assets/img/rem-icon-vendors.svg" alt=""></span>
           <h3 class="advantage-card__title">Поддержка любых производителей</h3>
-          <p class="advantage-card__text">Работаем с оборудованием <span class="accent">Siemens, Schneider, Vacon, Danfoss, Inovance и другими</span> ведущими производителями систем управления.</p>
+          <p class="advantage-card__text">Обслуживаем краны <span class="accent">Konecranes, Demag, ZPMC, <br>Уралкран, Спецкран</span> и системы управления <br>Siemens, Schneider, Vacon, Danfoss, Inovance.</p>
         </article>
         <img class="advantages__photo" src="assets/img/rem-adv-3.webp" alt="" width="526" height="268" loading="lazy">
       </div>
@@ -378,8 +415,8 @@
               <img class="out-card__bg" src="assets/img/rem-out-1.webp" alt="" width="526" height="285" loading="lazy">
               <span class="out-card__shade"></span>
               <span class="out-card__icon"><img src="assets/img/rem-icon-shield.svg" alt="" width="20" height="22"></span>
-              <h3 class="out-card__title">Недостаток персонала</h3>
-              <p class="out-card__text">В компании не хватает специалистов<br>с необходимыми знаниями и опытом<br>для обслуживания кранового оборудования.</p>
+              <h3 class="out-card__title">Недостаток квалифицированного персонала</h3>
+              <p class="out-card__text">Не хватает специалистов с опытом обслуживания козловых кранов, особенно современных моделей с автоматизированными системами.</p>
             </article>
           </div>
           <div class="swiper-slide">
@@ -388,7 +425,7 @@
               <span class="out-card__shade"></span>
               <span class="out-card__icon"><img src="assets/img/rem-icon-shield.svg" alt="" width="20" height="22"></span>
               <h3 class="out-card__title">Повышенные риски простоев</h3>
-              <p class="out-card__text out-card__text--wide">Из-за нерегулярного или поверхностного<br>обслуживания возрастает риск аварий и остановок,<br>что влияет на производственный процесс.</p>
+              <p class="out-card__text out-card__text--wide">Нерегулярное обслуживание повышает риск аварий и остановок, что критично для портов, складов и непрерывных производств.</p>
             </article>
           </div>
           <div class="swiper-slide">
@@ -397,7 +434,7 @@
               <span class="out-card__shade"></span>
               <span class="out-card__icon"><img src="assets/img/rem-icon-shield.svg" alt="" width="20" height="22"></span>
               <h3 class="out-card__title">Отсутствие системного подхода</h3>
-              <p class="out-card__text">Нет чёткой системы планирования, учёта и анализа технического состояния кранов, что приводит к ремонту «по факту» и росту затрат.</p>
+              <p class="out-card__text">Нет системы планирования и мониторинга состояния кранов — ремонт «по факту» <br>и рост затрат.</p>
             </article>
           </div>
           <div class="swiper-slide">
@@ -405,8 +442,8 @@
               <img class="out-card__bg" src="assets/img/rem-out-4.webp" alt="" width="526" height="285" loading="lazy">
               <span class="out-card__shade"></span>
               <span class="out-card__icon"><img src="assets/img/rem-icon-shield.svg" alt="" width="20" height="22"></span>
-              <h3 class="out-card__title">Высокие затраты на содержание собственной службы</h3>
-              <p class="out-card__text">Поддержание внутренней ремонтной службы требует постоянных расходов на персонал, инструменты, обучение и запчасти.</p>
+              <h3 class="out-card__title">Высокие затраты <br>на собственную службу</h3>
+              <p class="out-card__text">Своё подразделение требует расходов на персонал, оборудование, обучение и склад запчастей.</p>
             </article>
           </div>
           <div class="swiper-slide">
@@ -414,8 +451,8 @@
               <img class="out-card__bg" src="assets/img/rem-out-5.webp" alt="" width="526" height="285" loading="lazy">
               <span class="out-card__shade"></span>
               <span class="out-card__icon"><img src="assets/img/rem-icon-shield.svg" alt="" width="20" height="22"></span>
-              <h3 class="out-card__title">Рост технологичности кранового оборудования</h3>
-              <p class="out-card__text">Краны оснащаются автоматикой, частотными преобразователями и датчиками, которые требуют высокой компетенции для обслуживания.</p>
+              <h3 class="out-card__title">Рост технологичности оборудования</h3>
+              <p class="out-card__text">Современные краны оснащены частотными приводами, системами позиционирования <br>и датчиками, требующими высокой компетенции.</p>
             </article>
           </div>
         </div>
@@ -442,9 +479,18 @@
               <p class="trust-slide__label">Профессиональный подход</p>
               <div class="trust-slide__body">
                 <h3 class="trust-slide__title">Команда более 45 аттестованных специалистов</h3>
-                <p class="trust-slide__text">В штате компании более 45 аттестованных инженеров с профильным<br>техническим образованием
-                  и действующей аттестацией Ростехнадзора.<br><span class="accent">Команда ежегодно проходит повышение квалификации и обладает<br>практическим опытом работы</span>
-                  с оборудованием ведущих производителей:<br>Konecranes, Demag, Worldhoist, ZPMC, Спецкран и Уралкран.</p>
+                <p class="trust-slide__text">В штате <span class="accent">Cranes</span> Engineering — более 45 дипломированных инженеров с профильным образованием и действующей аттестацией Ростехнадзора. <span class="accent">Команда ежегодно повышает квалификацию и имеет практический опыт работы</span> с козловыми кранами Konecranes, Demag, Worldhoist, ZPMC, Спецкран и Уралкран.</p>
+              </div>
+            </article>
+          </div>
+          <div class="swiper-slide">
+            <article class="trust-slide">
+              <img class="trust-slide__bg" src="assets/img/rem-trust-4.webp" alt="" width="1620" height="546" loading="lazy">
+              <span class="trust-slide__shade"></span>
+              <p class="trust-slide__label">Наличие необходимой документации</p>
+              <div class="trust-slide__body">
+                <h3 class="trust-slide__title">Специализированные направления в структуре персонала</h3>
+                <p class="trust-slide__text"><span class="accent">Мобильные бригады для работ на действующих производствах,</span> геодезисты для контроля геометрии подкрановых путей, специалисты по электрооборудованию и ПЛК, эксперты по диагностике металлоконструкций и механизмов передвижения.</p>
               </div>
             </article>
           </div>
@@ -455,9 +501,7 @@
               <p class="trust-slide__label">Наличие необходимой документации</p>
               <div class="trust-slide__body">
                 <h3 class="trust-slide__title">Полный комплекс разрешительной документации</h3>
-                <p class="trust-slide__text">Мы имеем <span class="accent">все необходимые допуски и лицензии для работы с опасными<br>производственными объектами:</span>
-                  свидетельство СРО на монтаж и ремонт подъемных<br>сооружений, аттестацию Ростехнадзора, допуски
-                  на высотные работы. Все наши<br>специалисты имеют личные удостоверения и группы по электробезопасности до 1000В.</p>
+                <p class="trust-slide__text">Свидетельство СРО на монтаж и ремонт подъёмных сооружений, аттестация Ростехнадзора, разрешения на высотные работы, группы по электробезопасности до 1000В. По завершении ремонта <span class="accent">заказчик получает полный комплект документации для регистрации</span> козлового крана в Ростехнадзоре.</p>
               </div>
             </article>
           </div>
@@ -468,9 +512,7 @@
               <p class="trust-slide__label">Опыт работы</p>
               <div class="trust-slide__body">
                 <h3 class="trust-slide__title">Опыт работы с крупнейшими предприятиями</h3>
-                <p class="trust-slide__text">За 15 лет работы <span class="accent">мы реализовали более 800 проектов по ремонту и модернизации<br>кранового оборудования</span>
-                  на предприятиях машиностроения, металлургии и в портах<br>Российской Федерации. Наш опыт охватывает
-                  объекты с высокой производственной<br>нагрузкой и повышенными требованиями к надёжности оборудования.</p>
+                <p class="trust-slide__text"><span class="accent">За 15 лет реализовано свыше 800 проектов по обслуживанию,</span> ремонту и модернизации кранового оборудования на объектах машиностроения, металлургии и портовых терминалах. Опыт охватывает козловые краны грузоподъёмностью от 5 до 500 тонн.</p>
               </div>
             </article>
           </div>
@@ -485,7 +527,7 @@
       <form class="consult__box" action="#" method="post" data-reveal>
         <h2 class="section-title">Бесплатная консультация</h2>
         <p class="consult__text">
-          Если вы хотите, чтобы крановое оборудование работало эффективно, бесперебойно, информативно,<br>
+          Если вы хотите, чтобы крановое оборудование работало эффективно, бесперебойно, информативно, <br>
           <span class="accent">мы подберем функции</span>, которые отвечают
           требованиям именно вашего производственного процесса.
         </p>
@@ -507,7 +549,7 @@
     <div class="container stats__grid">
       <div class="stats__info">
         <span class="section-badge" data-reveal>Наши показатели</span>
-        <h2 class="section-title stats__title" data-reveal>Цифры, за которыми<br>стоит практический опыт</h2>
+        <h2 class="section-title stats__title" data-reveal>Цифры, за которыми <br>стоит практический опыт</h2>
         <button class="btn btn--grey stats__btn" type="button" data-reveal>Связаться с нами</button>
         <p class="stats__text" data-reveal>
           Подбираем оптимальные решения по модернизации с учетом особенностей объекта
@@ -529,7 +571,7 @@
         </div>
         <div class="stat-card stat-card--accent">
           <p class="stat-card__value">100%</p>
-          <p class="stat-card__caption">Кранов соответствуют ГОСТ<br>и ТУ после модернизации</p>
+          <p class="stat-card__caption">Кранов соответствуют ГОСТ <br>и ТУ после модернизации</p>
         </div>
       </div>
     </div>
@@ -558,7 +600,7 @@
           <div class="swiper-slide case-card">
             <img class="case-card__photo" src="assets/img/case-1.webp" alt="Модернизация мостового крана" loading="lazy">
             <div class="case-card__content">
-              <h3 class="case-card__title">Модернизация<br>мостового крана гп 32/5т</h3>
+              <h3 class="case-card__title">Модернизация <br>мостового крана гп 32/5т</h3>
               <p class="case-card__text">
                 Выполнили комплексное обновление оборудования: замену ключевых узлов,
                 модернизацию системы управления и&nbsp;пусконаладочные работы.
@@ -668,68 +710,101 @@
       <div class="faq__grid">
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-1">
-            <span>Какие неисправности чаще всего возникают<br>у козловых кранов?</span>
+            <span>Когда необходим ремонт козлового крана?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-1">
-            <p class="faq__a">Наиболее распространенными являются износ колесных пар, повреждение рельсового хода, неисправности механизмов передвижения, коррозия металлоконструкций и сбои в работе электрооборудования.</p>
+            <p class="faq__a">Ремонт козлового крана необходим при износе механизмов (редукторов, подшипников, канатных систем), повреждениях металлоконструкций, неисправностях электрической части, появлении шумов и вибраций, а также при проблемах с тормозной системой.</p>
           </div>
         </div>
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-2">
-            <span>Выполняется ли ремонт козловых кранов,<br>работающих на открытых площадках?</span>
+            <span>Какие виды ремонта козловых кранов вы выполняете?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-2">
-            <p class="faq__a">Да, ремонт козловых кранов проводится независимо от условий эксплуатации. При обслуживании оборудования, работающего под открытым небом, особое внимание уделяется состоянию металлоконструкций, защите от коррозии и исправности электрооборудования.</p>
+            <p class="faq__a">Выполняем три вида ремонта: текущий — устранение мелких дефектов и замена изнашиваемых деталей; средний — частичная разборка узлов и замена компонентов; капитальный — полная разборка, замена большинства изношенных частей и модернизация.</p>
           </div>
         </div>
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-3">
-            <span>Проводится ли ремонт рельсового<br>механизма козлового крана?</span>
+            <span>Как проводится диагностика состояния <br>козлового крана?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-3">
-            <p class="faq__a">Да, при необходимости выполняется ремонт механизмов передвижения, колесных пар, приводов и других элементов, обеспечивающих движение козлового крана по рельсовым путям.</p>
+            <p class="faq__a">Диагностика включает визуальный осмотр конструктивных элементов и механизмов, оценку электрооборудования, тестирование гидравлических и пневматических систем, инструментальный контроль металла методами ультразвуковой дефектоскопии и магнитопорошкового контроля.</p>
           </div>
         </div>
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-4">
-            <span>Можно ли модернизировать козловый кран<br>во время ремонта?</span>
+            <span>Выполняется ли ремонт козловых кранов <br>на открытых площадках?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-4">
-            <p class="faq__a">Да, одновременно с ремонтом возможна модернизация козлового крана. Она может включать замену электрооборудования, установку современных систем управления, частотных преобразователей и обновление приборов безопасности.</p>
+            <p class="faq__a">Да. Козловые краны эксплуатируются преимущественно на открытых площадках, и мы выполняем ремонт с учётом климатических факторов — на объекте заказчика, без демонтажа и транспортировки крана.</p>
           </div>
         </div>
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-5">
-            <span>Как определяется объем ремонта козлового крана?</span>
+            <span>Проводится ли ремонт рельсового механизма <br>и подкрановых путей?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-5">
-            <p class="faq__a">Перед началом работ проводится техническая диагностика оборудования, по результатам которой оценивается степень износа узлов и составляется перечень необходимых ремонтных работ.</p>
+            <p class="faq__a">Да. Ремонт козлового крана включает восстановление ходовой части <br>и рельсового механизма, а при необходимости — ремонт и нивелировку подкрановых путей с геодезическим контролем геометрии.</p>
           </div>
         </div>
         <div class="faq__item" data-reveal>
           <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-6">
-            <span>Продлевает ли капитальный ремонт срок службы?</span>
+            <span>Можно ли модернизировать козловой кран во <br>время ремонта?</span>
             <span class="faq__toggle" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </button>
           <div class="faq__answer" id="faq-a-6">
-            <p class="faq__a">Да, капитальный ремонт козлового крана позволяет восстановить технические характеристики оборудования, заменить изношенные узлы<br>и значительно увеличить срок его дальнейшей безопасной эксплуатации.</p>
+            <p class="faq__a">Да. При капитальном ремонте возможна модернизация: установка частотно-регулируемых приводов, обновление систем управления <br>и позиционирования, замена электрооборудования на современное.</p>
+          </div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-7">
+            <span>Какие документы требуются для ремонта <br>козлового крана?</span>
+            <span class="faq__toggle" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq__answer" id="faq-a-7">
+            <p class="faq__a">Потребуются паспорт крана, проектная документация, сведения о предыдущих ремонтах и ТО, сертификаты соответствия на запчасти и расходные материалы.</p>
+          </div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-8">
+            <span>Какие механизмы чаще всего требуют замены при <br>ремонте козлового крана?</span>
+            <span class="faq__toggle" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq__answer" id="faq-a-8">
+            <p class="faq__a">Чаще всего замене подлежат: редукторы (износ зубчатых передач и подшипников), подшипники, тормозные системы (колодки, диски), электродвигатели (обмотки, щётки, подшипники), кабели и электропроводка, канаты и тросы (трещины, коррозия, обрывы), шкивы и блоки.</p>
+          </div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a-9">
+            <span>Какие гарантии предоставляются на ремонт?</span>
+            <span class="faq__toggle" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v14M10 17l-6-6M10 17l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="faq__answer" id="faq-a-9">
+            <p class="faq__a">Гарантия определяется договором и составляет до 24 месяцев. Исполнитель отвечает за качество работ и устраняет недостатки в течение гарантийного срока.</p>
           </div>
         </div>
       </div>
@@ -743,7 +818,7 @@
         <div>
           <h2 class="section-title">Услуги, которые вам также могут понадобиться</h2>
           <p class="other-services__lead">
-            В зависимости от поставленной задачи, <span class="accent">подберем для вас</span> сервисную программу<br>
+            В зависимости от поставленной задачи, <span class="accent">подберем для вас</span> сервисную программу <br>
             обслуживания грузоподъемной техники или предоставим требуемую услугу отдельно.
           </p>
         </div>
@@ -758,8 +833,8 @@
             <article class="service-card">
               <img class="service-card__photo" src="assets/img/rem-other-1.webp" alt="Ремонт портальных кранов" width="790" height="383" loading="lazy">
               <div class="service-card__body">
-                <h3 class="service-card__title">Ремонт<br>портальных кранов</h3>
-                <p class="service-card__text"><span class="accent">Оперативно устраняем неисправности,</span> повышая надежность, безопасность<br>и производительность оборудования.</p>
+                <h3 class="service-card__title">Ремонт <br>портальных кранов</h3>
+                <p class="service-card__text"><span class="accent">Оперативно устраняем неисправности,</span> повышая надежность, безопасность <br>и производительность оборудования.</p>
               </div>
               <a class="service-card__btn" href="remont-portalnyh-kranov.html">Подробнее</a>
             </article>
@@ -768,7 +843,7 @@
             <article class="service-card">
               <img class="service-card__photo" src="assets/img/rem-other-2.webp" alt="Ремонт кран-балок" width="790" height="383" loading="lazy">
               <div class="service-card__body">
-                <h3 class="service-card__title">Ремонт<br>кран-балок</h3>
+                <h3 class="service-card__title">Ремонт <br>кран-балок</h3>
                 <p class="service-card__text"><span class="accent">Выполняем восстановление</span> с заменой поврежденных деталей, настройкой приводов и проверкой механизмов.</p>
               </div>
               <a class="service-card__btn" href="remont-kran-balok.html">Подробнее</a>
@@ -778,8 +853,8 @@
             <article class="service-card">
               <img class="service-card__photo" src="assets/img/rem-other-1.webp" alt="Ремонт портальных кранов" width="790" height="383" loading="lazy">
               <div class="service-card__body">
-                <h3 class="service-card__title">Ремонт<br>портальных кранов</h3>
-                <p class="service-card__text"><span class="accent">Оперативно устраняем неисправности,</span> повышая надежность, безопасность<br>и производительность оборудования.</p>
+                <h3 class="service-card__title">Ремонт <br>портальных кранов</h3>
+                <p class="service-card__text"><span class="accent">Оперативно устраняем неисправности,</span> повышая надежность, безопасность <br>и производительность оборудования.</p>
               </div>
               <a class="service-card__btn" href="remont-portalnyh-kranov.html">Подробнее</a>
             </article>
@@ -788,7 +863,7 @@
             <article class="service-card">
               <img class="service-card__photo" src="assets/img/rem-other-2.webp" alt="Ремонт кран-балок" width="790" height="383" loading="lazy">
               <div class="service-card__body">
-                <h3 class="service-card__title">Ремонт<br>кран-балок</h3>
+                <h3 class="service-card__title">Ремонт <br>кран-балок</h3>
                 <p class="service-card__text"><span class="accent">Выполняем восстановление</span> с заменой поврежденных деталей, настройкой приводов и проверкой механизмов.</p>
               </div>
               <a class="service-card__btn" href="remont-kran-balok.html">Подробнее</a>
@@ -845,8 +920,8 @@
     <div class="container footer__contacts">
       <a href="tel:+74955874338">8 (495) 587-43-38</a>
       <p class="footer__address">
-        117105, г. Москва, вн.тер.г.<br>
-        муниципальный округ Донской,<br>
+        117105, г. Москва, вн.тер.г. <br>
+        муниципальный округ Донской, <br>
         наб. Нводаниловская, д. 12, помещ. 122
       </p>
       <ul class="footer__emails">
@@ -858,7 +933,7 @@
     </div>
     <hr>
     <div class="container footer__cols">
-      <a class="footer__logo" href="/">
+      <a class="footer__logo" href="index.html">
         <img src="assets/img/logo-dark.svg" alt="CRANES ENGINEERING" width="273" height="84">
       </a>
       <div class="footer__col">

@@ -2,35 +2,651 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>E-Cranes — раздел «Услуги»: страницы</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 60px auto; line-height: 1.6; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 15px; margin: 28px 0 8px; color: #666; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
-    .todo { color: #999; }
-    small { color: #999; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CRANES ENGINEERING — производство, модернизация и сервис индустриальных кранов</title>
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Крейнс Инжиниринг: производство мостовых и козловых кранов, модернизация, автоматизация, удаленное управление, ремонт и техническое обслуживание грузоподъемного оборудования.">
+  <link rel="preload" href="assets/fonts/montserrat-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/main-hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
-  <h1>E-Cranes — раздел «Услуги»</h1>
 
-  <h2>Хабы</h2>
-  <ol>
-    <li><a href="uslugi.html">Услуги</a></li>
-    <li><a href="modernizaciya-kranov.html">Модернизация кранов</a></li>
-    <li><a href="avtomatizaciya-kranov.html">Автоматизация кранов</a></li>
-  </ol>
+  <section class="hero hero--main">
+    <div class="hero__bg hero__bg--main"></div>
 
-  <h2>Детальные страницы</h2>
-  <ol>
-    <li><a href="modernizaciya-mostovyh-kranov.html">Модернизация мостовых кранов</a></li>
-    <li><a href="modernizaciya-kozlovyh-kranov.html">Модернизация козловых кранов</a></li>
-    <li><a href="modernizaciya-portalnyh-kranov.html">Модернизация портальных кранов</a></li>
-    <li><a href="smart-opcii-dlya-kranov.html">Смарт-опции для кранов</a></li>
-    <li><a href="remont-mostovyh-kranov.html">Ремонт мостовых кранов</a></li>
-    <li><a href="remont-kozlovyh-kranov.html">Ремонт козловых кранов</a></li>
-    <li><a href="remont-portalnyh-kranov.html">Ремонт портальных кранов</a></li>
-    <li><a href="remont-kran-balok.html">Ремонт кран-балок</a></li>
-  </ol>
+    <div class="container">
+      <header class="header">
+        <div class="header__row">
+          <a class="header__logo" href="index.html">
+            <img src="assets/img/logo-light.svg" alt="CRANES ENGINEERING" width="140" height="43">
+          </a>
+          <nav class="header__nav" aria-label="Основное меню">
+            <ul>
+              <li><a href="#">О компании</a></li>
+              <li class="header__nav-item has-mega">
+                <a href="uslugi.html" aria-haspopup="true" aria-expanded="false">Услуги</a>
+                <div class="mega">
+                  <ul class="mega__col mega__col--root">
+                    <li class="mega__item is-parent" data-mega="modernizaciya">
+                      <a href="modernizaciya-kranov.html">Модернизация кранов</a>
+                    </li>
+                    <li class="mega__item"><a href="avtomatizaciya-kranov.html">Автоматизация кранов</a></li>
+                    <li class="mega__item"><a href="#">Удаленное управление кранами</a></li>
+                    <li class="mega__item"><a href="remont-mostovyh-kranov.html">Ремонт грузоподъемных кранов</a></li>
+                    <li class="mega__item"><a href="#">Техническое обслуживание кранов</a></li>
+                    <li class="mega__item"><a href="#">Диагностика<br>и комплексное обследование</a></li>
+                    <li class="mega__item"><a href="#">Монтаж индустриальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Ремонт крановых путей</a></li>
+                  </ul>
+                  <ul class="mega__col mega__col--sub" data-mega-sub="modernizaciya">
+                    <li class="mega__item"><a href="modernizaciya-kozlovyh-kranov.html">Модернизация козловых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-mostovyh-kranov.html">Модернизация мостовых кранов</a></li>
+                    <li class="mega__item"><a href="modernizaciya-portalnyh-kranov.html">Модернизация портальных кранов</a></li>
+                    <li class="mega__item"><a href="#">Перевод кранов на радиоуправление</a></li>
+                    <li class="mega__item"><a href="smart-opcii-dlya-kranov.html">Смарт опции для кранов</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="#">Продукция</a></li>
+              <li><a href="#">Документация</a></li>
+              <li><a href="#">Наши работы</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
+          <div class="header__contacts">
+            <a class="header__phone" href="tel:+74955874338">8 (495) 587-43-38</a>
+            <span class="header__hours">ПН-ПТ 09:00-18:00</span>
+          </div>
+          <button class="btn header__cta" type="button" data-popup="popup-callback">Заказать звонок</button>
+          <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+        <hr class="header__divider">
+      </header>
+
+      <div class="mobile-menu" id="mobile-menu" hidden>
+        <nav aria-label="Мобильное меню">
+          <ul class="mobile-menu__list">
+            <li><a href="#">О компании</a></li>
+            <li><a href="uslugi.html">Услуги</a></li>
+            <li><a href="#">Продукция</a></li>
+            <li><a href="#">Документация</a></li>
+            <li><a href="#">Наши работы</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="mobile-menu__contacts">
+          <a class="mobile-menu__phone" href="tel:+74955874338">8 (495) 587-43-38</a>
+          <span class="header__hours">ПН-ПТ 09:00-18:00</span>
+          <button class="btn" type="button" data-popup="popup-callback">Заказать звонок</button>
+        </div>
+      </div>
+
+      <div class="hero__decor" aria-hidden="true"></div>
+      <h1 class="hero__title hero__title--main">
+        <span class="accent">Крейнс</span><br>Инжиниринг
+      </h1>
+
+      <div class="hero__directions">
+        <article class="direction">
+          <h2 class="direction__title">Производство кранов</h2>
+          <p class="direction__text">Мостовые, козловые<br>и специальные индустриальные краны</p>
+        </article>
+        <article class="direction">
+          <h2 class="direction__title">Модернизация<br>и ремонт</h2>
+          <p class="direction__text">Обновление механики,<br>электропривода и систем<br>управления</p>
+        </article>
+        <article class="direction">
+          <h2 class="direction__title">Smart Crane<br>и автоматизация</h2>
+          <p class="direction__text">Интеллектуальные функции,<br>удалённое управление<br>и цифровые системы</p>
+        </article>
+        <article class="direction">
+          <h2 class="direction__title">Технический<br>сервис</h2>
+          <p class="direction__text">Обслуживание, диагностика<br>и аварийный ремонт<br>кранов</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-services hub-services--main">
+    <div class="container">
+      <span class="section-badge" data-reveal>Услуги</span>
+      <h2 class="section-title hub-services__title" data-reveal>Инженерные решения</h2>
+      <p class="hub-services__lead" data-reveal>
+        Сервисное сопровождение, технический аудит, ремонт и модернизация кранового оборудования с применением
+        современных систем управления и цифровых технологий. <span class="accent">Наши инженерные сервисы охватывают весь жизненный<br>
+        цикл крана — от технического обслуживания и диагностики до комплексной модернизации.</span>
+      </p>
+
+      <div class="hub-services__grid">
+        <article class="service-card" data-reveal>
+          <img class="service-card__photo" src="assets/img/hub-modernizaciya.webp" alt="Модернизация кранов" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Модернизация кранов</h3>
+            <p class="service-card__text">
+              Мы <span class="accent">внедряем современные решения:</span> частотно-регулируемое
+              управление, автоматизацию на базе PLC, мониторинг, смарт-опции и радиоуправление.
+            </p>
+          </div>
+          <a class="service-card__btn" href="modernizaciya-kranov.html">Подробнее</a>
+        </article>
+
+        <article class="service-card" data-reveal>
+          <img class="service-card__photo" src="assets/img/hub-avtomatizaciya.webp" alt="Автоматизация кранов" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Автоматизация кранов</h3>
+            <p class="service-card__text">
+              Внедрение современных систем автоматического управления
+              <span class="accent">для повышения эффективности<br>и безопасности</span> работы кранов.
+            </p>
+          </div>
+          <a class="service-card__btn" href="avtomatizaciya-kranov.html">Подробнее</a>
+        </article>
+
+        <hr class="hub-services__sep">
+
+        <article class="service-card" data-reveal>
+          <img class="service-card__photo" src="assets/img/hub-udalennoe.webp" alt="Удаленное управление кранами" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Удаленное<br>управление кранами</h3>
+            <p class="service-card__text">
+              Проектируем и внедряем <span class="accent">комплексные системы управления</span>
+              мостовыми, козловыми и портальными кранами<br>из удаленной операторской.
+            </p>
+          </div>
+          <a class="service-card__btn" href="#">Подробнее</a>
+        </article>
+
+        <article class="service-card" data-reveal>
+          <img class="service-card__photo" src="assets/img/hub-remont.webp" alt="Ремонт грузоподъемных кранов" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Ремонт грузоподъемных кранов</h3>
+            <p class="service-card__text">
+              Ремонтируем крановое <span class="accent">оборудование любой сложности</span> — от замены колес<br>и токоподвода до восстановления электрической и механической части.
+            </p>
+          </div>
+          <a class="service-card__btn" href="remont-mostovyh-kranov.html">Подробнее</a>
+        </article>
+      </div>
+
+      <div class="hub-services__all" data-reveal>
+        <a class="btn" href="uslugi.html">Смотреть все услуги</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-services hub-services--prod">
+    <div class="container">
+      <span class="section-badge" data-reveal>Продукция</span>
+      <h2 class="section-title hub-services__title" data-reveal>Производство индустриальных<br>кранов полного цикла</h2>
+      <p class="hub-services__lead" data-reveal>
+        Мы проектируем и выпускаем краны, оснащая их современными системами управления, цифровыми датчиками,<br>
+        интеллектуальными модулями безопасности и технологическими решениями для повышения эффективности оборудования.
+      </p>
+
+      <div class="hub-services__grid">
+        <article class="service-card service-card--plain" data-reveal>
+          <img class="service-card__photo" src="assets/img/main-prod-mostovye.webp" alt="Мостовые краны" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Мостовые краны</h3>
+          </div>
+          <a class="service-card__btn" href="#">Подробнее</a>
+        </article>
+
+        <article class="service-card service-card--plain" data-reveal>
+          <img class="service-card__photo" src="assets/img/main-prod-kozlovye.webp" alt="Козловые краны" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Козловые краны</h3>
+          </div>
+          <a class="service-card__btn" href="#">Подробнее</a>
+        </article>
+
+        <hr class="hub-services__sep">
+
+        <article class="service-card service-card--plain" data-reveal>
+          <img class="service-card__photo" src="assets/img/main-prod-upravlenie.webp" alt="Системы управления краном" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Системы управления краном</h3>
+          </div>
+          <a class="service-card__btn" href="#">Подробнее</a>
+        </article>
+
+        <article class="service-card service-card--plain" data-reveal>
+          <img class="service-card__photo" src="assets/img/main-prod-tali.webp" alt="Тали и грузовые тележки" width="790" height="383" loading="lazy">
+          <div class="service-card__body">
+            <h3 class="service-card__title">Тали и грузовые тележки</h3>
+          </div>
+          <a class="service-card__btn" href="#">Подробнее</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-us">
+    <div class="container">
+      <span class="section-badge" data-reveal>О нас</span>
+      <h2 class="section-title about-us__title" data-reveal>
+        <span class="accent">Крейнс Инжиниринг</span> — полный цикл работ<br>с промышленными кранами
+      </h2>
+      <p class="about-us__lead" data-reveal>
+        Обслуживаем. Ремонтируем. Модернизируем. Цифровизуем.<br>
+        Решения под ключ для мостовых, козловых и портальных кранов на промышленных предприятиях по всей России.
+      </p>
+
+      <div class="about-us__grid">
+        <article class="about-card" data-reveal>
+          <span class="about-card__icon">
+            <img src="assets/img/icon-about-like.svg" alt="" width="37" height="37">
+          </span>
+          <div class="about-card__head">
+            <h3 class="about-card__title">Комплексный подход</h3>
+            <span class="about-card__num">[01]</span>
+          </div>
+          <ul class="about-card__list">
+            <li>Полный набор услуг: проектирование, электрика, автоматизация, внедрение ПЛК, частотно-регулируемых систем, интеграция датчиков, настройка приводов, ПНР и шеф-монтаж.</li>
+            <li>Мы закрываем весь цикл обслуживания — от диагностики и ремонта до глубоких программ модернизации и цифровых апгрейдов.</li>
+          </ul>
+        </article>
+
+        <article class="about-card about-card--grey" data-reveal>
+          <span class="about-card__icon">
+            <img src="assets/img/icon-24h.svg" alt="" width="38" height="38">
+          </span>
+          <div class="about-card__head">
+            <h3 class="about-card__title">Сервис 24/7</h3>
+            <span class="about-card__num">[02]</span>
+          </div>
+          <ul class="about-card__list">
+            <li>Ежемесячные, квартальные и круглосуточные сервисные пакеты<br>с мониторингом, инспекциями, оперативным выездом специалистов и плановым обслуживанием оборудования.</li>
+            <li>Сервисный пакет формируется с учётом потребностей клиента и режима работы кранового оборудования.</li>
+          </ul>
+        </article>
+
+        <article class="about-card about-card--grey" data-reveal>
+          <span class="about-card__icon">
+            <img src="assets/img/icon-settings.svg" alt="" width="38" height="38">
+          </span>
+          <div class="about-card__head">
+            <h3 class="about-card__title">Современные технологии</h3>
+            <span class="about-card__num">[03]</span>
+          </div>
+          <ul class="about-card__list">
+            <li>Интеграция цифровых контроллеров, частотных приводов, дистанционного управления, видеонаблюдения, датчиков нагрузки и интеллектуальных систем управления.</li>
+            <li>Поддержка удалённого мониторинга и аналитики работы кранов с интеграцией в существующие системы управления.</li>
+          </ul>
+        </article>
+
+        <article class="about-card" data-reveal>
+          <span class="about-card__icon">
+            <img src="assets/img/icon-file.svg" alt="" width="39" height="39">
+          </span>
+          <div class="about-card__head">
+            <h3 class="about-card__title">Надежность и допуски</h3>
+            <span class="about-card__num">[04]</span>
+          </div>
+          <ul class="about-card__list">
+            <li>Официальное членство в СРО, соблюдение требований ГОСТ и отраслевых стандартов, наличие всех разрешительных документов, страхование ответственности.</li>
+            <li>Подтверждённый опыт работы с крупнейшими промышленными предприятиями страны.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div class="container">
+      <img class="promo__photo" src="assets/img/main-banner.webp" alt="" width="1620" height="546" loading="lazy" data-reveal>
+    </div>
+  </section>
+
+  <section class="consult" id="zayavka">
+    <div class="container">
+      <form class="consult__box" action="#" method="post" data-reveal>
+        <h2 class="section-title">Бесплатная консультация</h2>
+        <p class="consult__text">
+          Если вы хотите, чтобы крановое оборудование работало эффективно, бесперебойно, информативно,<br>
+          <span class="accent">мы подберем функции</span>, которые отвечают
+          требованиям именно вашего производственного процесса.
+        </p>
+        <div class="consult__row">
+          <input class="consult__input" type="text" name="name" placeholder="Введите ваше имя" required>
+          <input class="consult__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+          <button class="btn consult__submit" type="submit">Получить консультацию</button>
+        </div>
+        <label class="consult__agree">
+          <input type="checkbox" name="agree" required>
+          <span class="consult__checkbox" aria-hidden="true"></span>
+          Я соглашаюсь с условиями политики конфиденциальности
+        </label>
+      </form>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stats__info">
+        <span class="section-badge" data-reveal>Наши показатели</span>
+        <h2 class="section-title stats__title" data-reveal>Цифры, за которыми<br>стоит практический опыт</h2>
+        <button class="btn btn--grey stats__btn" type="button" data-reveal>Связаться с нами</button>
+        <p class="stats__text" data-reveal>
+          Подбираем оптимальные решения по модернизации с учетом особенностей объекта
+          и условий эксплуатации.
+        </p>
+      </div>
+      <div class="stats__cards" data-reveal>
+        <div class="stat-card stat-card--grey">
+          <p class="stat-card__value">1000+</p>
+          <p class="stat-card__caption">Реализованных проектов для промышленных предприятий</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__value">50 000+</p>
+          <p class="stat-card__caption">Часов технического обслуживания в год</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card__value">24/7</p>
+          <p class="stat-card__caption">Техническая поддержка и выезд на объект</p>
+        </div>
+        <div class="stat-card stat-card--accent">
+          <p class="stat-card__value">100%</p>
+          <p class="stat-card__caption">Кранов соответствуют ГОСТ<br>и ТУ после модернизации</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advantages">
+    <div class="container">
+      <span class="section-badge" data-reveal>Преимущества</span>
+      <h2 class="section-title advantages__title" data-reveal>Почему нам доверяют</h2>
+      <div class="advantages__grid">
+        <div class="advantage-card advantage-card--white" data-reveal>
+          <span class="advantage-card__icon">
+            <img src="assets/img/icon-clipboard.svg" alt="" width="40" height="40">
+          </span>
+          <h3 class="advantage-card__title">Комплексная экспертиза</h3>
+          <p class="advantage-card__text">
+            Объединяем компетенции в крановом оборудовании, PLC, электроприводе,
+            видеонаблюдении, серверной инфраструктуре и системах безопасности.
+          </p>
+        </div>
+        <div class="advantage-card" data-reveal>
+          <span class="advantage-card__icon">
+            <img src="assets/img/icon-quality.svg" alt="" width="40" height="40">
+          </span>
+          <h3 class="advantage-card__title">Интеграция оборудования</h3>
+          <p class="advantage-card__text">
+            Проектируем систему с учетом конструкции крана, приводов, шкафов управления,
+            рабочих циклов и требований производства.
+          </p>
+        </div>
+        <div class="advantage-card advantage-card--white" data-reveal>
+          <span class="advantage-card__icon">
+            <img src="assets/img/icon-like.svg" alt="" width="41" height="41">
+          </span>
+          <h3 class="advantage-card__title">Полный цикл</h3>
+          <p class="advantage-card__text">
+            Берем на себя обследование, проектирование, изготовление шкафов, монтаж,
+            пусконаладку и обучение персонала.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cases">
+    <div class="container">
+      <span class="section-badge" data-reveal>Кейсы</span>
+      <div class="cases__head" data-reveal>
+        <div>
+          <h2 class="section-title">Наши работы</h2>
+          <p class="cases__lead">За годы работы мы реализовали десятки проектов по модернизации кранового оборудования.</p>
+        </div>
+        <div class="slider-nav">
+          <button class="slider-arrow cases__prev" type="button" aria-label="Предыдущий слайд">
+            <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M6 1 1 6l5 5M1 6h16" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button class="slider-arrow cases__next" type="button" aria-label="Следующий слайд">
+            <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M11 1l5 5-5 5M16 6H0" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="cases__slider swiper" data-reveal>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide case-card">
+            <img class="case-card__photo" src="assets/img/main-case-1.webp" alt="Модернизация мостового крана" loading="lazy">
+            <div class="case-card__content">
+              <h3 class="case-card__title">Модернизация<br>мостового крана гп 32/5т</h3>
+              <p class="case-card__text">
+                Выполнили комплексное обновление оборудования: замену ключевых узлов,
+                модернизацию системы управления и&nbsp;пусконаладочные работы.
+              </p>
+              <p class="case-card__label">Результат:</p>
+              <p class="case-card__text">
+                Решение позволило повысить надежность эксплуатации и продлить срок службы крана.
+              </p>
+              <a class="case-card__link" href="#">Смотреть кейс подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide case-card">
+            <img class="case-card__photo" src="assets/img/main-case-2.webp" alt="Капитальный ремонт грузовой тележки" loading="lazy">
+            <div class="case-card__content">
+              <h3 class="case-card__title">Капитальный ремонт грузовой тележки мостового крана г/п 100/20 т</h3>
+              <p class="case-card__text">
+                Провели восстановление основных механизмов и замену изношенных компонентов
+                грузовой тележки.
+              </p>
+              <p class="case-card__label">Результат:</p>
+              <p class="case-card__text">
+                Оборудование подготовлено к&nbsp;дальнейшей безопасной<br>и&nbsp;эффективной эксплуатации.
+              </p>
+              <a class="case-card__link" href="#">Смотреть кейс подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide case-card">
+            <img class="case-card__photo" src="assets/img/case-3.webp" alt="Капитальный ремонт мостовых кранов с телескопической платформой" loading="lazy">
+            <div class="case-card__content">
+              <h3 class="case-card__title">Капитальный ремонт мостовых кранов с телескопической платформой</h3>
+              <p class="case-card__text">
+                Выполнили ремонт металлоконструкций, механизмов передвижения и&nbsp;подъема,
+                а&nbsp;также восстановление основных функциональных узлов крана.
+              </p>
+              <p class="case-card__label">Результат:</p>
+              <p class="case-card__text">
+                Обеспечена надежная работа оборудования и&nbsp;восстановлены его
+                эксплуатационные характеристики.
+              </p>
+              <a class="case-card__link" href="#">Смотреть кейс подробнее</a>
+            </div>
+          </div>
+          <div class="swiper-slide case-card">
+            <img class="case-card__photo" src="assets/img/case-4.webp" alt="Монтаж мостового крана" loading="lazy">
+            <div class="case-card__content">
+              <h3 class="case-card__title">Монтаж мостового крана</h3>
+              <p class="case-card__text">
+                Выполнили сборку и&nbsp;установку мостового крана, монтаж основных механизмов
+                и&nbsp;подключение инженерных систем.
+              </p>
+              <p class="case-card__label">Результат:</p>
+              <p class="case-card__text">
+                Оборудование успешно введено в&nbsp;эксплуатацию и&nbsp;готово к&nbsp;безопасной
+                работе в&nbsp;штатном режиме.
+              </p>
+              <a class="case-card__link" href="#">Смотреть кейс подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cases__all" data-reveal>
+        <a class="btn btn--dark" href="#">Смотреть все работы</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="geo">
+    <div class="container">
+      <div class="geo__head" data-reveal>
+        <div>
+          <h2 class="section-title">География деятельности</h2>
+          <p class="geo__lead">
+            Наши сервисные бригады выезжают на объекты по всей стране и гарантируют
+            надежность и бесперебойную работу кранов вне зависимости от расстояния.
+          </p>
+        </div>
+        <button class="btn btn--dark geo__cta" type="button">Заказать обслуживание в своем регионе</button>
+      </div>
+
+      <div class="geo__map-wrap" data-reveal>
+        <div class="geo__stat">
+          <p class="geo__stat-value">40+</p>
+          <p class="geo__stat-caption">регионов России, где мы обслуживаем крановое оборудование</p>
+        </div>
+        <object class="geo__map" type="image/svg+xml" data="assets/img/map-russia.svg" aria-label="Карта регионов России, где работают сервисные бригады"></object>
+      </div>
+
+      <div class="geo__clients" data-reveal>
+        <div class="geo__logo"><img src="assets/img/logo-client-2.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-3.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-4.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-5.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-6.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-7.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-1.webp" alt="Логотип клиента" loading="lazy"></div>
+        <div class="geo__logo"><img src="assets/img/logo-client-2.webp" alt="Логотип клиента" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="diag" id="diagnostika">
+    <div class="container">
+      <div class="diag__box" data-reveal>
+        <img class="diag__bg" src="assets/img/diag-bg.webp" alt="" loading="lazy">
+        <div class="diag__shade"></div>
+        <div class="diag__grid">
+          <div class="diag__info">
+            <h2 class="diag__title">Диагностика от 29.000₽</h2>
+            <p class="diag__text">
+              При выполнении технического обслуживания, ремонта, модернизации
+              у нас&nbsp;<span class="accent">диагностика проводится БЕСПЛАТНО</span>&nbsp;— ее стоимость полностью
+              засчитывается в счет будущих работ
+            </p>
+            <div class="diag__phone-block">
+              <p>Не хотите ждать звонка?</p>
+              <p>Позвоните нам по этому номеру:</p>
+              <a class="diag__phone" href="tel:+74955874338">8 (495) 587-43-38</a>
+            </div>
+          </div>
+          <form class="diag__form" action="#" method="post">
+            <div class="diag__form-row">
+              <input class="diag__input" type="text" name="name" placeholder="Введите ваше имя" required>
+              <input class="diag__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+            </div>
+            <label class="diag__file">
+              <input type="file" name="file">
+              <span class="diag__file-label">Выберите файл</span>
+            </label>
+            <input class="diag__input" type="text" name="comment" placeholder="Комментарий">
+            <label class="diag__agree">
+              <input type="checkbox" name="agree" required>
+              <span class="diag__checkbox" aria-hidden="true"></span>
+              Я соглашаюсь с условиями политики конфиденциальности
+            </label>
+            <button class="btn diag__submit" type="submit">Получить консультацию</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <hr>
+    <div class="container footer__contacts">
+      <a href="tel:+74955874338">8 (495) 587-43-38</a>
+      <p class="footer__address">
+        117105, г. Москва, вн.тер.г.<br>
+        муниципальный округ Донской,<br>
+        наб. Нводаниловская, д. 12, помещ. 122
+      </p>
+      <ul class="footer__emails">
+        <li><a href="mailto:info@e-cranes.ru">info@e-cranes.ru</a> <span class="note">- общая почта</span></li>
+        <li><a href="mailto:supply@e-cranes.ru">supply@e-cranes.ru</a> <span class="note">- отдел закупок</span></li>
+        <li><a href="mailto:finance@e-cranes.ru">finance@e-cranes.ru</a> <span class="note">- отдел бухгалтерии</span></li>
+      </ul>
+      <span>ПН-ПТ 09:00-18:00</span>
+    </div>
+    <hr>
+    <div class="container footer__cols">
+      <a class="footer__logo" href="index.html">
+        <img src="assets/img/logo-dark.svg" alt="CRANES ENGINEERING" width="273" height="84">
+      </a>
+      <div class="footer__col">
+        <p class="footer__col-title">Продукция</p>
+        <ul>
+          <li><a href="#">Мостовые краны</a></li>
+          <li><a href="#">Козловые краны</a></li>
+          <li><a href="#">Системы управления краном</a></li>
+          <li><a href="#">Тали и грузовые тележки</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Услуги</p>
+        <ul>
+          <li><a href="modernizaciya-kranov.html">Модернизация кранов</a></li>
+          <li><a href="remont-mostovyh-kranov.html">Ремонт грузоподъемных кранов</a></li>
+          <li><a href="#">Ремонт крановых путей</a></li>
+          <li><a href="#">Техническое обслуживание кранов</a></li>
+          <li><a href="#">Диагностика и комплексное обследование</a></li>
+          <li><a href="#">Монтаж индустриальных кранов</a></li>
+          <li><a href="#">Монтаж подкрановых путей и анкерных линий</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">О компании</p>
+        <ul>
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Документация</a></li>
+          <li><a href="#">Примеры работ</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="container footer__bottom">
+      <span>© 2012-2026 ООО «КРЕЙНС ИНЖИНИРИНГ»</span>
+      <a href="#">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <div class="modal" id="popup-callback" role="dialog" aria-modal="true" aria-labelledby="popup-callback-title" hidden>
+    <div class="modal__box modal__box--form">
+      <button class="modal__close" type="button" aria-label="Закрыть">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M3 3l24 24M27 3L3 27" stroke="currentColor" stroke-width="4"/></svg>
+      </button>
+      <h3 class="modal__title" id="popup-callback-title">Заказать звонок</h3>
+      <p class="modal__text">
+        Оставьте номер — перезвоним в рабочее время,
+        <span class="accent">ПН-ПТ 09:00-18:00.</span>
+      </p>
+      <form class="callback__form" action="#" method="post">
+        <input class="consult__input" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input class="consult__input" type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+        <label class="consult__agree">
+          <input type="checkbox" name="agree" required>
+          <span class="consult__checkbox" aria-hidden="true"></span>
+          Я соглашаюсь с условиями политики конфиденциальности
+        </label>
+        <button class="btn callback__submit" type="submit">Жду звонка</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
